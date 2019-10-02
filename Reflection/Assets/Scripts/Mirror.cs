@@ -23,8 +23,10 @@ public class Mirror : MonoBehaviour
     public void ShowReflectionDir()
     {
         _line.positionCount = 2;
-        _line.SetPosition(0,this.transform.position);
-        _line.SetPosition(1,this.transform.position + new Vector3(_reflectionDir.x,_reflectionDir.y,0) * 2.0f);
+        _line.SetPosition(0,Vector3.zero);
+        _line.SetPosition(1,new Vector3(_reflectionDir.x, _reflectionDir.y, 0) * 0.2f);
+        _line.startWidth = _line.endWidth = 0.02f;
+        _line.startColor = _line.endColor = Color.cyan;
     }
 
     private void Update()
