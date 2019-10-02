@@ -7,12 +7,26 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="AbstractActorHealth.cs" t="Include" />
+          <e p="Boss" t="Include">
+            <e p="BossBehaviors.cs" t="Include" />
+            <e p="BossHealth.cs" t="Include" />
+          </e>
+          <e p="Bullet" t="Include">
+            <e p="AbstractBullet.cs" t="Include" />
+            <e p="CircularBullets.cs" t="Include" />
+            <e p="NormalBullet.cs" t="Include" />
+          </e>
           <e p="Character" t="Include">
             <e p="Controller2D.cs" t="Include" />
+            <e p="PlayerHealth.cs" t="Include" />
             <e p="PlayerInput.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
+            <e p="PlayerSetMirror.cs" t="Include" />
             <e p="RaycastController.cs" t="Include" />
           </e>
+          <e p="Mirror.cs" t="Include" />
+          <e p="TimeScaleManager.cs" t="Include" />
         </e>
       </e>
       <e p="Library" t="ExcludeRecursive" />
