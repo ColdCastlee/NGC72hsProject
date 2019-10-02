@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TimeScaleManager
 {
-    public float slowDownFactor = 0.2f;
+    public float slowDownFactor = 0.02f;
     public float slowDownTime;
 
     public void DoSlowMotion()
