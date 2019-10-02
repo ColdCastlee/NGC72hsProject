@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\a\.Rider2018.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\a\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_Reflection.-2017520036.00" t="ExcludeRecursive" />
-    <e p="D:\codingProjects\unity\NGC72hsProject\Reflection" t="IncludeRecursive">
+    <e p="C:\Users\john\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\john\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Reflection.410727451.00" t="ExcludeRecursive" />
+    <e p="C:\Users\john\Desktop\NGC72hsProject\Reflection" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
@@ -29,13 +29,10 @@
           <e p="TimeScaleManager.cs" t="Include" />
         </e>
       </e>
-      <e p="Library" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="Reflection.sln" t="IncludeFlat" />
-      <e p="Temp" t="ExcludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-      </e>
+      <e p="Temp\bin" t="ExcludeRecursive" />
     </e>
   </component>
 </project>

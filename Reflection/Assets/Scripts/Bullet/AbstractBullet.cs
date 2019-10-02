@@ -13,6 +13,8 @@ namespace Bullet
         //子弹实际移动的速度（带方向，它等于speed * dir，但有可能在其他子弹的设计中，改变这个最简单的计算方式）
         public Vector2 BulletMoveVelocity;
 
+
+        public LayerMask MirrorLayerMask;
         public LayerMask PlayerLayerMask;
         public LayerMask ZombieLayerMask;
         public LayerMask BossLayerMask;
