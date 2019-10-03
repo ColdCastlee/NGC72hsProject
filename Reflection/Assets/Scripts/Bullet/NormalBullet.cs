@@ -31,7 +31,7 @@ namespace Bullet
             hit = Physics2D.Raycast(transform.position, BulletMoveDir,50.0f,MirrorLayerMask);
             if(hit)
             {
-                Debug.Log("Hit");
+//                Debug.Log("Hit");
                 var mirrorScript = hit.transform.gameObject.GetComponent<Mirror>();
                 this.BulletMoveDir = mirrorScript.ReflectionDir;
                 
