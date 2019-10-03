@@ -46,7 +46,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2156630807462006568}
   - component: {fileID: 2621916607168573343}
-  - component: {fileID: 3659056464483916680}
   m_Layer: 5
   m_Name: HpSilder
   m_TagString: Untagged
@@ -125,31 +124,7 @@ MonoBehaviour:
   m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 11500000, guid: 4ab3c0bfd3ab88a4c867dad227762291, type: 3}
-        m_MethodName: 
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &3659056464483916680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1564687703107013692}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ab3c0bfd3ab88a4c867dad227762291, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _hpSlider: {fileID: 2621916607168573343}
+      m_Calls: []
 --- !u!1 &4080765186650857457
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,7 +137,6 @@ GameObject:
   - component: {fileID: 5085168489818464184}
   - component: {fileID: 4080295413635955580}
   - component: {fileID: 2523929457724938751}
-  - component: {fileID: 1718656132}
   m_Layer: 5
   m_Name: hp
   m_TagString: Untagged
@@ -250,18 +224,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &1718656132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4080765186650857457}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 549faac2e450c654483070a5a54d218b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4271476802348195066
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,10 +26,8 @@
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.rider@1.1.0/Rider/Editor/RiderInitializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/HP.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Mirror.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TimeScaleManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/testHp.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AbstractActorHealth.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -41,15 +39,15 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AbstractActor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AbstractActorHealth.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Boss/BossHealth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/PlayerHealth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TimeScaleManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/PlayerSetMirror.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Mirror.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Bullet/AbstractBullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Bullet/NormalBullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/HP.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/testHp.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Bullet/AbstractBullet.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Boss/BossHealth.cs" />
       </list>
     </option>
   </component>
@@ -114,6 +112,7 @@
       <workItem from="1570038291699" duration="776000" />
       <workItem from="1570066782680" duration="2408000" />
       <workItem from="1570071219156" duration="1168000" />
+      <workItem from="1570074986247" duration="848000" />
     </task>
     <servers />
   </component>
