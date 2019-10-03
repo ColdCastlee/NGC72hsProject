@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Boss
 {
@@ -9,12 +10,15 @@ namespace Boss
         private Animator _bossAnimator;
         public UnityEvent BossOnHit;
         public UnityEvent BossOnDead;
+        public Slider _hpSilider;
     
         // Start is called before the first frame update
         void Start()
         {
             this.Hp = BossMaxHp;
             _bossAnimator = GetComponent<Animator>();
+            _hpSilider = gameObject.GetComponentInChildren<Slider>();
+
         }
 
         // Update is called once per frame
@@ -36,6 +40,9 @@ namespace Boss
         public override void TakeDamage(int damage)
         {
             base.TakeDamage(damage);
+
+            _hpSilider.value = this.Hp;
+            
             BossOnHit.Invoke();
             //粒子特效
             //音效

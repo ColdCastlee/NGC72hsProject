@@ -268,7 +268,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AbstractActor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AbstractActorHealth.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Boss/BossHealth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/PlayerHealth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/PlayerSetMirror.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Bullet/AbstractBullet.cs" />
