@@ -11,14 +11,12 @@ namespace Boss
         public UnityEvent BossOnHit;
         public UnityEvent BossOnDead;
         public Slider _hpSilider;
-    
         // Start is called before the first frame update
         void Start()
         {
             this.Hp = BossMaxHp;
             _bossAnimator = GetComponent<Animator>();
             _hpSilider = gameObject.GetComponentInChildren<Slider>();
-
         }
 
         // Update is called once per frame

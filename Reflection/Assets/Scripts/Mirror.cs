@@ -36,8 +36,14 @@ public class Mirror : AbstractActorHealth
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Debug.Log("Mirror Health: " + this.Hp);
+        }
         ShowReflectionDir();
         Debug_ReflectionDir = _reflectionDir;
+        
+        CheckDeath();
     }
 
     public override void CheckDeath()
@@ -46,6 +52,9 @@ public class Mirror : AbstractActorHealth
         {
             return;
         }   
+        
+        Debug.Log("Glass Died");
+        
         OnMirrorBroken.Invoke();
         Destroy(this.gameObject);
     }
