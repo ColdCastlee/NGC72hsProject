@@ -18,17 +18,21 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Boss/BossHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bullet/NormalBullet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/Path.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bullet/AbstractBullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerSetMirror.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/Controller2D.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AI/Seeker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/RaycastController.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnermyAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.rider@1.1.0/Rider/Editor/RiderInitializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Mirror.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TimeScaleManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AbstractActorHealth.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AstarPath.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -39,7 +43,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AbstractActor.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AbstractActorHealth.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Character/PlayerHealth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/TimeScaleManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/PlayerSetMirror.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Mirror.cs" />
@@ -48,6 +51,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/testHp.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Bullet/AbstractBullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Boss/BossHealth.cs" />
+        <option value="$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AI/Seeker.cs" />
+        <option value="$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AstarPath.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Character/PlayerHealth.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/EnermyAI.cs" />
       </list>
     </option>
   </component>
@@ -64,6 +71,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -112,7 +120,7 @@
       <workItem from="1570038291699" duration="776000" />
       <workItem from="1570066782680" duration="2408000" />
       <workItem from="1570071219156" duration="1168000" />
-      <workItem from="1570074986247" duration="848000" />
+      <workItem from="1570074986247" duration="12962000" />
     </task>
     <servers />
   </component>
