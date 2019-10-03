@@ -233,6 +233,10 @@
           <e p="EnermyAI.cs" t="Include" />
           <e p="Mirror.cs" t="Include" />
           <e p="TimeScaleManager.cs" t="Include" />
+          <e p="UI" t="Include">
+            <e p="ButtonPause.cs" t="Include" />
+            <e p="StartGame.cs" t="Include" />
+          </e>
         </e>
       </e>
       <e p="AstarPathfindingProject.csproj" t="IncludeRecursive" />

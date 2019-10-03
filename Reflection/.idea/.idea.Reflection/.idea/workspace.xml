@@ -26,11 +26,13 @@
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AI/Seeker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/RaycastController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnermyAI.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ButtonPause.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.rider@1.1.0/Rider/Editor/RiderInitializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Mirror.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TimeScaleManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/StartGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AbstractActorHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AstarPath.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
@@ -55,6 +57,8 @@
         <option value="$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AstarPath.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/PlayerHealth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnermyAI.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/ButtonPause.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartGame.cs" />
       </list>
     </option>
   </component>
@@ -120,7 +124,9 @@
       <workItem from="1570038291699" duration="776000" />
       <workItem from="1570066782680" duration="2408000" />
       <workItem from="1570071219156" duration="1168000" />
-      <workItem from="1570074986247" duration="12962000" />
+      <workItem from="1570074986247" duration="14056000" />
+      <workItem from="1570097329118" duration="2562000" />
+      <workItem from="1570111443974" duration="544000" />
     </task>
     <servers />
   </component>
