@@ -6,6 +6,7 @@ namespace Bullet
 {
     public class NormalBullet : AbstractBullet
     {
+        private bool _canBeReflected = true;
         private bool _isRefelcted = false;
         private bool _isInitialized = false;
 
@@ -14,94 +15,9 @@ namespace Bullet
             base.Update();
             if (!_isInitialized)
             {
-                Debug.LogError("Bullet Not Initialized. Check This Error.");
+                //Debug.LogError("Normal Bullet Not Initialized. Check This Error.");
             }
         }
-
-
-//        private void HandleRayCastingDetect()
-//        {
-//            Debug.DrawLine(this.transform.position,
-//                this.transform.position + new Vector3(BulletMoveDir.x, BulletMoveDir.y, 0), Color.yellow);
-//            //镜子
-//            _hit = Physics2D.Raycast(transform.position, BulletMoveDir, 10.0f, MirrorLayerMask);
-//            
-//            if (_hit)
-//            {
-//                if (_hit.distance <= 0.0f)
-//                {
-//                    //inside the mirror, don't check
-//                }
-//                else
-//                {
-//                    if (Mathf.Abs(_hit.distance) <= 0.02f)
-//                    {
-//    //                    Debug.Log("Hit");
-//                        var mirrorScript = _hit.transform.gameObject.GetComponent<Mirror>();
-//                        this.BulletMoveDir = mirrorScript.ReflectionDir.normalized;
-//                        this.transform.position = mirrorScript.transform.position;
-//                        mirrorScript.TakeDamage(1);
-//                        _isRefelcted = true;
-//                        BulletAtkDamage++;
-//                    }                    
-//                }
-//
-//                //TODO::Add LayerMask Check Code.
-//            }
-//
-//            //玩家
-//            _hit = Physics2D.Raycast(transform.position, BulletMoveDir, 10.0f, PlayerLayerMask);
-//            if (_hit)
-//            {
-//                if (_hit.distance <= 0.0f)
-//                {
-//                    //inside the mirror, don't check
-//                }
-//                else
-//                {
-//                    if (Mathf.Abs(_hit.distance) <= 0.02f)
-//                    {
-//    //                    Debug.Log("Hit");
-//                        //要检查是否被反射过
-//                        if (!_isRefelcted)
-//                        {
-//                            var playerHealth = _hit.transform.gameObject.GetComponent<PlayerHealth>();
-//                            playerHealth.TakeDamage(this.BulletAtkDamage);
-//                            Die();
-//                        }
-//                    }                    
-//                }
-//            }
-//
-//            //BOSS
-//            _hit = Physics2D.Raycast(transform.position, BulletMoveDir, 10.0f, BossLayerMask);
-//            if (_hit)
-//            {
-//                if (Mathf.Abs(_hit.distance) <= 0.02f)
-//                {
-////                    Debug.Log("Hit");
-//                    if (_isRefelcted)
-//                    {
-//                        var bossHealth = _hit.transform.gameObject.GetComponent<BossHealth>();
-//                        bossHealth.TakeDamage(this.BulletAtkDamage);
-//                        Die();
-//                    }
-//                }
-//            }
-//
-//            //墙壁
-//            _hit = Physics2D.Raycast(transform.position, BulletMoveDir, 10.0f, WallLayerMask);
-//            if (_hit)
-//            {
-//                if (Mathf.Abs(_hit.distance) <= 0.02f)
-//                {
-////                    Debug.Log("Hit");
-//                    this.Die();
-//                }
-//            }
-//
-//            //todo::还有僵尸
-//        }
 
         public void Init(int bulletDamage, Vector2 moveDir, float maxVelocity)
         {
@@ -139,8 +55,6 @@ namespace Bullet
                     this.MaxMoveSpeedXy *= 2;
                     BulletAtkDamage++;
                     this.BulletMoveDir = playerSetMirrorScript.MouseDir;
-
-
                 }
                 //要检查是否被反射过或者正在翻滚
                 if (!_isRefelcted && !hitTarget.gameObject.GetComponent<PlayerMovement>()._isDashing)

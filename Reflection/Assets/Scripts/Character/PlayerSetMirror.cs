@@ -16,6 +16,7 @@ public class PlayerSetMirror : MonoBehaviour
     
     //
     private int _collectedFragrants = 0;
+    public int MaxFragrantHoldNum = 12;
 
     private float _maxSlowEffectTime = 2.0f;
     private float _slowEffectTimePassed = 0.0f;
@@ -224,15 +225,41 @@ public class PlayerSetMirror : MonoBehaviour
         mirrorScript.Init(dir);
     }
 
-    
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.transform.CompareTag("MirrorFragrant"))    
+        {
+            //Debug.Log("CollectedSomething?");
+            var mirrorFragScript = other.transform.GetComponent<BasicFrag>();
+            if (this._collectedFragrants < MaxFragrantHoldNum && mirrorFragScript.FinishedInitializing)
+            {
+                mirrorFragScript.TakeDamage(1);
+                this._collectedFragrants += mirrorFragScript.FragSize;
+                if (this._collectedFragrants > MaxFragrantHoldNum)
+                {
+                    this._collectedFragrants = MaxFragrantHoldNum;
+                }
+            }
+            
+        }
+    }
+
+
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("MirrorFragrant"))
+        if (other.CompareTag("MirrorFragrant"))    
         {
             //Debug.Log("CollectedSomething?");
             var mirrorFragScript = other.GetComponent<BasicFrag>();
-            mirrorFragScript.TakeDamage(1);
-            this._collectedFragrants += mirrorFragScript.FragSize;
+            if (this._collectedFragrants < MaxFragrantHoldNum && mirrorFragScript.FinishedInitializing)
+            {
+                mirrorFragScript.TakeDamage(1);
+                this._collectedFragrants += mirrorFragScript.FragSize;
+                if (this._collectedFragrants > MaxFragrantHoldNum)
+                {
+                    this._collectedFragrants = MaxFragrantHoldNum;
+                }
+            }
             
         }
     }

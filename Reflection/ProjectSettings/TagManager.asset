@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - MirrorFragrant
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -20,9 +21,6 @@ TagManager:
   - Zombie
   - Boss
   - PostProcessing
-  - 
-  - 
-  - Wall
   - 
   - 
   - 
