@@ -28,9 +28,9 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Boss/GenerateZombin.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Boss/BossBehaviors.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Boss/BossHealth.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Resrouces/FadeBlack.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bullet/NormalBullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bullet/AbstractBullet.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/EF28F193-EAB6-4E49-B44B-3FB27EAB4F75/a2/46c7dc70/Action.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerSetMirror.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/Controller2D.cs" root0="FORCE_HIGHLIGHTING" />
@@ -39,18 +39,25 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Global.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/MemoryMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/StartGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/loadingScene.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0D555F45-51EF-4F4A-858F-0AE7C1078C2C/db/8fda2b1b/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/test_bulletControler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/trap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Fade.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/AudioName.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Boss/ZombinHealth.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UI_FadeInFadeOut.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/AudioMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnermyAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ButtonPause.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.rider@1.1.0/Rider/Editor/RiderInitializer.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/SceneFade.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Mirror.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TimeScaleManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BasicFrag.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0D555F45-51EF-4F4A-858F-0AE7C1078C2C/58/80267e0d/Color.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0D555F45-51EF-4F4A-858F-0AE7C1078C2C/f5/7701e54f/Application.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UIManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AbstractActorHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AstarPath.cs" root0="FORCE_HIGHLIGHTING" />
@@ -82,12 +89,23 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/EnermyAI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Gloval.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Global.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartGame.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/loadingScene.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/SceneFadeInOut.cs" />
         <option value="$PROJECT_DIR$/Assets/Resrouces/NewSurfaceShader.shader" />
         <option value="$PROJECT_DIR$/Assets/Resrouces/FadeBlack.shader" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/SceneFade.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/FadeInOut.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/test.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Fade.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/UI_FadeInFadeOut.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/loadingScene.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/AudioSouseManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/SingleAudioClip.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/AudioManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/AudioClipManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/AudioName.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/MemoryMgr.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Audio/AudioMgr.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartGame.cs" />
       </list>
     </option>
   </component>
@@ -155,7 +173,12 @@
       <workItem from="1570116493944" duration="1719000" />
       <workItem from="1570120114360" duration="3279000" />
       <workItem from="1570123922754" duration="1644000" />
-      <workItem from="1570156814672" duration="17273000" />
+      <workItem from="1570156814672" duration="20710000" />
+      <workItem from="1570185100922" duration="2752000" />
+      <workItem from="1570189265287" duration="1857000" />
+      <workItem from="1570197904127" duration="5410000" />
+      <workItem from="1570203451733" duration="2446000" />
+      <workItem from="1570206325883" duration="1771000" />
     </task>
     <servers />
   </component>

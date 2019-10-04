@@ -211,22 +211,49 @@
             <e p="UnityReferenceHelper.cs" t="Include" />
           </e>
         </e>
-        <e p="Resrouces" t="Include">
+        <e p="AudioClipConfig.txt" t="Include" />
+        <e p="CameraShake" t="Include">
+          <e p="CameraShake.cs" t="Include" />
+          <e p="CameraShakeManager.cs" t="Include" />
+        </e>
+        <e p="EZ Camera Shake" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="CameraShakeInstance.cs" t="Include" />
+            <e p="CameraShakePresets.cs" t="Include" />
+            <e p="CameraShaker.cs" t="Include" />
+            <e p="Utilities" t="Include">
+              <e p="CameraUtilities.cs" t="Include" />
+            </e>
+          </e>
+        </e>
+        <e p="MonsterLove" t="Include">
+          <e p="StateMachine" t="Include">
+            <e p="StateMachine.cs" t="Include" />
+            <e p="StateMachineRunner.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Resources" t="Include">
           <e p="FadeBlack.shader" t="Include" />
         </e>
         <e p="Scripts" t="Include">
           <e p="AbstractActorHealth.cs" t="Include" />
+          <e p="Audio" t="Include">
+            <e p="AudioMgr.cs" t="Include" />
+            <e p="AudioName.cs" t="Include" />
+            <e p="MemoryMgr.cs" t="Include" />
+          </e>
           <e p="BasicFrag.cs" t="Include" />
           <e p="Boss" t="Include">
             <e p="BossBehaviors.cs" t="Include" />
             <e p="BossHealth.cs" t="Include" />
+            <e p="BossMovement.cs" t="Include" />
             <e p="GenerateZombin.cs" t="Include" />
             <e p="ZombinHealth.cs" t="Include" />
           </e>
           <e p="Bullet" t="Include">
             <e p="AbstractBullet.cs" t="Include" />
-            <e p="CircularBullets.cs" t="Include" />
             <e p="NormalBullet.cs" t="Include" />
+            <e p="VirusBullet.cs" t="Include" />
           </e>
           <e p="Character" t="Include">
             <e p="Controller2D.cs" t="Include" />
@@ -239,17 +266,24 @@
           <e p="EnermyAI.cs" t="Include" />
           <e p="FragGenerator.cs" t="Include" />
           <e p="Mirror.cs" t="Include" />
+          <e p="StateMachine" t="Include">
+            <e p="StateMachine.cs" t="Include" />
+          </e>
           <e p="test_bulletControler.cs" t="Include" />
           <e p="TimeScaleManager.cs" t="Include" />
           <e p="trap.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="ButtonPause.cs" t="Include" />
+            <e p="Fade.cs" t="Include" />
             <e p="Global.cs" t="Include" />
             <e p="loadingScene.cs" t="Include" />
-            <e p="SceneFade.cs" t="Include" />
             <e p="StartGame.cs" t="Include" />
+            <e p="UI_FadeInFadeOut.cs" t="Include" />
           </e>
           <e p="UIManager.cs" t="Include" />
+        </e>
+        <e p="StreamingAssets" t="Include">
+          <e p="AudioClipConfig.txt" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
