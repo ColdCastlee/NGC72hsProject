@@ -211,6 +211,9 @@
             <e p="UnityReferenceHelper.cs" t="Include" />
           </e>
         </e>
+        <e p="Resrouces" t="Include">
+          <e p="FadeBlack.shader" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
           <e p="AbstractActorHealth.cs" t="Include" />
           <e p="BasicFrag.cs" t="Include" />
@@ -243,7 +246,7 @@
             <e p="ButtonPause.cs" t="Include" />
             <e p="Global.cs" t="Include" />
             <e p="loadingScene.cs" t="Include" />
-            <e p="SceneFadeInOut.cs" t="Include" />
+            <e p="SceneFade.cs" t="Include" />
             <e p="StartGame.cs" t="Include" />
           </e>
           <e p="UIManager.cs" t="Include" />

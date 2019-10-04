@@ -28,11 +28,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Boss/GenerateZombin.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Boss/BossBehaviors.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Boss/BossHealth.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Resrouces/FadeBlack.shader" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bullet/NormalBullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Bullet/AbstractBullet.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerSetMirror.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/SceneFadeInOut.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/Controller2D.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AstarPathfindingProject/Core/AI/Seeker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/RaycastController.cs" root0="FORCE_HIGHLIGHTING" />
@@ -47,6 +47,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnermyAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ButtonPause.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.rider@1.1.0/Rider/Editor/RiderInitializer.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/SceneFade.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Mirror.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TimeScaleManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BasicFrag.cs" root0="FORCE_HIGHLIGHTING" />
@@ -82,8 +83,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Gloval.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Global.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartGame.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/SceneFadeInOut.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/loadingScene.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/SceneFadeInOut.cs" />
+        <option value="$PROJECT_DIR$/Assets/Resrouces/NewSurfaceShader.shader" />
+        <option value="$PROJECT_DIR$/Assets/Resrouces/FadeBlack.shader" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/SceneFade.cs" />
       </list>
     </option>
   </component>
@@ -151,7 +155,7 @@
       <workItem from="1570116493944" duration="1719000" />
       <workItem from="1570120114360" duration="3279000" />
       <workItem from="1570123922754" duration="1644000" />
-      <workItem from="1570156814672" duration="14116000" />
+      <workItem from="1570156814672" duration="17273000" />
     </task>
     <servers />
   </component>
