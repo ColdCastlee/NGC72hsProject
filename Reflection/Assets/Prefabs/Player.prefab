@@ -194,6 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca63a89a2291304bb0e11117b5b16bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _settingShield: 0
+  ShieldImg: {fileID: 0}
   MirrorImg: {fileID: 8950176765234980659}
   Mirror: {fileID: 1915254585032623565, guid: 2377b1bc924c9a4489f6f7f91ad9b234, type: 3}
 --- !u!95 &1952041988

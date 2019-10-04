@@ -43,6 +43,7 @@ public class Mirror : AbstractActorHealth
         ShowReflectionDir();
         Debug_ReflectionDir = _reflectionDir;
         
+        
         CheckDeath();
     }
 

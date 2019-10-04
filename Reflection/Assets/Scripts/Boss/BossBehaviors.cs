@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Boss;
 using Bullet;
 using UnityEngine;
 
@@ -20,13 +21,16 @@ public class BossBehaviors : MonoBehaviour
     private float _shootClock = 1.0f;
     //圆圈射击
 
-    //
-
+    //小僵尸
+    public float generateInterval = 5f;
+    private float curTime = 0;
+    private GenerateZombin _zombin;
+    
     // Start is called before the first frame update
     void Start()
     {
         Player = GameObject.Find("Player");
-        
+        _zombin = gameObject.GetComponentInChildren<GenerateZombin>();
     }
 
     // Update is called once per frame
@@ -38,9 +42,21 @@ public class BossBehaviors : MonoBehaviour
         BasicAtk();
         
         //圆圈射击状态判断
-        
+        //生成小僵尸
+        curTime += Time.deltaTime;
+
+        generateZombin();
+
     }
 
+    private void generateZombin()
+    {
+        if (curTime >= generateInterval)
+        {
+            _zombin.generateZombin();
+            curTime = 0;
+        }
+    }
     private void UpdateTargetDir()
     {
         Debug.DrawLine(this.transform.position, Player.transform.position, Color.black);
