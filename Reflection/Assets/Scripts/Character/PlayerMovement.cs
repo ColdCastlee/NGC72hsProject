@@ -21,9 +21,6 @@ public class PlayerMovement : MonoBehaviour
 		get { return _dashTimer < _dashTime; }
 	}
 
-    private Vector2 _playerMoveDir;
-    private Vector2 _playerMoveVelocity;
-
 	float accelerationTimeGrounded = .1f;
 	public float moveSpeed = 2;
 	public float dashSpeed = 2f;
@@ -135,6 +132,5 @@ public class PlayerMovement : MonoBehaviour
 		velocity.y = Mathf.SmoothDamp (velocity.y, targetVelocityY, ref velocityYSmoothing, accelerationTimeGrounded);
 		
 		//TODO::Round the whole velocity.
-		
 	}
 }

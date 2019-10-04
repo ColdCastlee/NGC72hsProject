@@ -14,12 +14,9 @@ namespace Bullet
         //子弹实际移动的速度（带方向，它等于speed * dir，但有可能在其他子弹的设计中，改变这个最简单的计算方式）
         [FormerlySerializedAs("BulletMoveVelocity")] public Vector2 BulletDeltaMovement;
 
-
-        public LayerMask MirrorLayerMask;
-        public LayerMask PlayerLayerMask;
-        public LayerMask ZombieLayerMask;
-        public LayerMask BossLayerMask;
-        public LayerMask WallLayerMask;
+        //子弹最长生存时间
+        public float MaxLiveTime = 10.0f;
+        private float _liveTimer = 0.0f;
 
         public virtual void Start()
         {
@@ -27,8 +24,18 @@ namespace Bullet
     
         public virtual void Update()
         {
+            CheckBulletLiveTime();
             CalculateBulletVelocity();
             Move();
+        }
+
+        private void CheckBulletLiveTime()
+        {
+            _liveTimer += Time.deltaTime;
+            if (_liveTimer > MaxLiveTime)
+            {
+                Die();
+            }
         }
     
         /// <summary>

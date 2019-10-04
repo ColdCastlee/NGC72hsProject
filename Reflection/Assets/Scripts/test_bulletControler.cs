@@ -36,10 +36,9 @@ public class test_bulletControler : MonoBehaviour
             AtackTime += Time.deltaTime;
 
 
+            //上下左右
             if (ClockTime <= bullet1T && AtackTime >= AtackCD)
             {
-
-
                 var obj = Instantiate(Bullet, transform.position, Quaternion.identity).GetComponent<NormalBullet>();
                 obj.Init(1, new Vector2(0, 1), 2.0f);
 
@@ -55,6 +54,7 @@ public class test_bulletControler : MonoBehaviour
                 AtackTime = 0;
 
             }
+            //斜着的上下左右
             else if (ClockTime >= bullet1T && ClockTime < bullet2T && AtackTime >= AtackCD)
             {
                 var obj = Instantiate(Bullet, transform.position, Quaternion.identity).GetComponent<NormalBullet>();
@@ -73,6 +73,7 @@ public class test_bulletControler : MonoBehaviour
                 AtackTime = 0;
 
             }
+            //上下左右和斜着的上下左右
             else if (ClockTime >= bullet2T && ClockTime < bulletAllT && AtackTime >= AtackCD)
             {
                 var obj = Instantiate(Bullet, transform.position, Quaternion.identity).GetComponent<NormalBullet>();
@@ -101,6 +102,7 @@ public class test_bulletControler : MonoBehaviour
                 AtackTime = 0;
 
             }
+            
             if (ClockTime >= bulletAllT)
             {
                 ClockTime = 0;

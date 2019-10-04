@@ -45,17 +45,17 @@ public class FragGenerator : MonoBehaviour
         for (int i = 0; i < GeneratePositionsNum;)
         {
             times++;
-            if (times > 10)
+            if (times > 100)
             {
                 break;
             }
             positions[i].x = Random.Range(UpperLeftCorner.x, DownwardRightCorner.x);
             positions[i].y = Random.Range(DownwardRightCorner.y, UpperLeftCorner.y);
-            var collider2D = Physics2D.OverlapCircle(positions[i], 0.5f, LayerToAvoid);
+            var collider2D = Physics2D.OverlapCircle(positions[i], 0.2f, LayerToAvoid);
             //Debug.Log(positions[i]);
             if (collider2D != null)
             {
-                Debug.Log(collider2D.name);
+                //Debug.Log(collider2D.name);
                 continue;
             }
             i++;
