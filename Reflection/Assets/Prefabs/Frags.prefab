@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2184277846156126264}
   - component: {fileID: 2184277846156126270}
   - component: {fileID: 2184277846156126269}
+  - component: {fileID: 985363396}
   m_Layer: 0
   m_Name: Frags
   m_TagString: MirrorFragrant
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2184277846156126265}
-  m_LocalRotation: {x: -0, y: -0, z: 0.41483074, w: 0.90989864}
+  m_LocalRotation: {x: 0, y: 0, z: 0.41482824, w: 0.9098998}
   m_LocalPosition: {x: 0.031, y: 1.154, z: -3.3900619}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -92,7 +93,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -121,7 +122,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 1
+  LiveTime: 6
   FragSize: 1
   OnCollectedFragrant:
     m_PersistentCalls:
       m_Calls: []
+  FinishGenerateTime: 1
+--- !u!50 &985363396
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2184277846156126265}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

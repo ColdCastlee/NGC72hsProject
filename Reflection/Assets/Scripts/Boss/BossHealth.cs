@@ -11,6 +11,9 @@ namespace Boss
         public UnityEvent BossOnHit;
         public UnityEvent BossOnDead;
         public Slider _hpSilider;
+
+        public float HealthPercentage => (float) Hp / (float) BossMaxHp;
+
         // Start is called before the first frame update
         void Start()
         {
