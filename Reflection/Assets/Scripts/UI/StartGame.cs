@@ -9,7 +9,8 @@ public class StartGame : MonoBehaviour
     public Button startButton;
     void Start()
     {
-        startButton.onClick.AddListener(() => { Application.LoadLevel(0); }); 
+        Global.GetInstance().loadName = "TestCharacterMovementScen";
+        startButton.onClick.AddListener(() => { Application.LoadLevel("loadingScene"); });
     }
 
 }

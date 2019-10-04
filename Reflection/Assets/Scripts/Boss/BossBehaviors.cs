@@ -94,6 +94,11 @@ public class BossBehaviors : MonoBehaviour
         fsm = StateMachine<States>.Initialize(this);
     }
 
+    //小僵尸
+    public float generateInterval = 5f;
+    private float curTime = 0;
+    private GenerateZombin _zombin;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -101,6 +106,7 @@ public class BossBehaviors : MonoBehaviour
         _bossMovement = GetComponent<BossMovement>();
         Player = GameObject.Find("Player");
         fsm.ChangeState(States.LevelOneInit);
+        _zombin = gameObject.GetComponentInChildren<GenerateZombin>();
     }
 
     // Update is called once per frame
@@ -137,11 +143,21 @@ public class BossBehaviors : MonoBehaviour
             _crazyMode = true;
             fsm.ChangeState(States.CrazyAtk);
         }
-        
-        
+        //生成小僵尸
+        curTime += Time.deltaTime;
+
+        generateZombin();
+
     }
 
-    //
+    private void generateZombin()
+    {
+        if (curTime >= generateInterval)
+        {
+            _zombin.generateZombin();
+            curTime = 0;
+        }
+    }
     private void UpdateTargetDir()
     {
         Debug.DrawLine(this.transform.position, Player.transform.position, Color.black);

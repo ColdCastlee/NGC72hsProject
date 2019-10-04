@@ -79,8 +79,19 @@ namespace Bullet
             //ZOMBIE
             else if (hitTarget.gameObject.layer == LayerMask.NameToLayer("Zombie"))
             {
-                Debug.Log("Hit Zombie.");
+                //Debug.Log("Hit Zombie.");
                 //TODO::IMPLEMENT THIS
+                if (_isRefelcted)
+                {
+                    var _zombinHealth = hitTarget.transform.gameObject.GetComponent<ZombinHealth>();
+                    this.transform.position = hitTarget.transform.position;
+                    this.MaxMoveSpeedXy *= 2;
+                    BulletAtkDamage++;
+                    var _zombin = hitTarget.gameObject.GetComponent<EnermyAI>();
+                    this.BulletMoveDir = _zombin.newVec.normalized;
+                    _zombinHealth.TakeDamage(this.BulletAtkDamage);
+                    Debug.Log(_zombinHealth.Hp);
+                }
             }
             //MIRROR
             else if (hitTarget.gameObject.layer == LayerMask.NameToLayer("Mirror"))
