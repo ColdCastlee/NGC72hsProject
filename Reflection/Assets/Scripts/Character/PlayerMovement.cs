@@ -1,16 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Character;
 using UnityEngine;
 
 [RequireComponent(typeof(Controller2D))]
 public class PlayerMovement : MonoBehaviour
 {
 
+	private PlayerHealth _playerHealth;
+	
+	private float _dashTimer = .2f;
+	private float _dashTime = .25f;
+	private float _dashSleepTime = .1f;
+	private float _dashSleepTimer = .1f;
+	private bool _canDash = true;
+	private Vector2 _dashDir;
+
+	public bool _isDashing
+	{
+		get { return _dashTimer < _dashTime; }
+	}
+
     private Vector2 _playerMoveDir;
     private Vector2 _playerMoveVelocity;
 
 	float accelerationTimeGrounded = .1f;
 	public float moveSpeed = 2;
+	public float dashSpeed = 2f;
 
 	Vector3 velocity;
 	private float velocityXSmoothing;
@@ -22,12 +38,42 @@ public class PlayerMovement : MonoBehaviour
 
 	void Start() {
 		controller = GetComponent<Controller2D> ();
+		_playerHealth = GetComponent<PlayerHealth>();
 	}
 
 	private void FixedUpdate()
 	{
 		CalculateVelocity ();
-		
+
+		if (_canDash)
+		{
+			if (_dashTimer < _dashTime)
+			{
+				//Debug.Log("Dashing.");
+				OnDashing();
+			}
+			else
+			{	//not dashing
+				OnDashEnd();
+			}			
+		}
+
+		if (!_canDash)
+		{
+			if (_dashSleepTimer < _dashSleepTime)
+			{
+				//begin sleep
+				_canDash = false;
+				_dashSleepTimer += Time.deltaTime;
+			}
+			else
+			{
+				//end sleep, can dash.
+				//Debug.Log("CAN DASH.");
+				_canDash = true;
+				_dashSleepTimer = _dashSleepTime;
+			}			
+		}
 		
 		controller.Move (velocity * Time.deltaTime, directionalInput);
 
@@ -46,9 +92,39 @@ public class PlayerMovement : MonoBehaviour
 		//
 	}
 
+	public void BeginDashSleep()
+	{
+		_canDash = false;
+	}
+
+	public void OnDashing()
+	{
+		this.velocity = _dashDir * dashSpeed;
+		_dashTimer += Time.deltaTime;
+	}
+
+	public void OnDashEnd()
+	{
+		_dashTimer = _dashTime;
+
+		BeginDashSleep();
+	}
+
 
 	public void SetDirectionalInput (Vector2 input) {
 		directionalInput = input;
+	}
+
+	public void Dash(Vector2 dir)
+	{
+		if (_isDashing || !_canDash)
+		{
+			return;
+		}
+		_dashDir = dir;
+		this.velocity = dir * moveSpeed;
+		_dashTimer = 0.0f;
+		
 	}
 	
 

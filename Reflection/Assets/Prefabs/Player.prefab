@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 7395248948895961001}
   - component: {fileID: 7395248948895961003}
   - component: {fileID: 7395248948895961012}
+  - component: {fileID: 1952041988}
+  - component: {fileID: 1451795161736435351}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -100,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  dashSpeed: 2.5
 --- !u!114 &7395248948895961005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,11 +194,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cca63a89a2291304bb0e11117b5b16bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _settingShield: 0
+  ShieldImg: {fileID: 0}
   MirrorImg: {fileID: 8950176765234980659}
-  Mirror: {fileID: 0}
-  OnBroken:
-    m_PersistentCalls:
-      m_Calls: []
+  Mirror: {fileID: 1915254585032623565, guid: 2377b1bc924c9a4489f6f7f91ad9b234, type: 3}
+--- !u!95 &1952041988
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395248948895961004}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5aadaabc18fcde54e8ee1bac8a81ed3d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!50 &1451795161736435351
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395248948895961004}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!1001 &7395248949349049086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -211,7 +253,7 @@ PrefabInstance:
     - target: {fileID: 1915254585032623565, guid: 2377b1bc924c9a4489f6f7f91ad9b234,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4912841465949546655, guid: 2377b1bc924c9a4489f6f7f91ad9b234,
         type: 3}
@@ -282,11 +324,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Positions.Array.data[1].y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2333110973384098506, guid: 2377b1bc924c9a4489f6f7f91ad9b234,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2377b1bc924c9a4489f6f7f91ad9b234, type: 3}
