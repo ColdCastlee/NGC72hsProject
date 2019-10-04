@@ -5,6 +5,7 @@ using Boss;
 using Bullet;
 using UnityEngine;
 using MonsterLove.StateMachine;
+using UnityEditor;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -278,6 +279,20 @@ public class BossBehaviors : MonoBehaviour
         }
     }
 
+    IEnumerator GenerateCircularWaveOnce(float angleFrom, float angleTo, float angleInterval, float fireInterval)
+    {
+        for (float angle = angleFrom  ; angle <= angleTo  ; angle += angleInterval)
+        {
+            float dirX = Mathf.Cos(Mathf.Deg2Rad * angle);
+            float dirY = Mathf.Sin(Mathf.Deg2Rad * angle);
+            var bullet = Instantiate(Bullet, transform.position, Quaternion.identity);
+            bullet.GetComponent<NormalBullet>()
+                .Init(CircularBulletDamage, new Vector2(dirX, dirY), CircularShootVelocity);
+            yield return new WaitForSeconds(fireInterval);
+        }
+    }
+
+    
     //
     private void GenerateCavityWaveOnce(Vector2 dir)
     {
@@ -367,6 +382,10 @@ public class BossBehaviors : MonoBehaviour
             BasicShootInterval = 0.4f;
             BasicShootVelocity = 2.0f;
         }
+
+        StartCoroutine(GenerateCircularWaveOnce(0.0f,360.0f,10.0f,0.05f));
+        
+        StartCoroutine(GenerateCircularWaveOnce(360.0f,0.0f,10.0f,0.05f));
 
     }
 

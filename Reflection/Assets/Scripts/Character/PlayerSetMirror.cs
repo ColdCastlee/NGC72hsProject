@@ -181,15 +181,14 @@ public class PlayerSetMirror : MonoBehaviour
 
     private void UpdateMouseDir()
     {
-        if (_isSettingMirror || _settingShield)
-        {
+
             Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
             Vector3 mousePosOnScreen = Input.mousePosition;
             mousePosOnScreen.z = screenPos.z;
             Vector3 mousePosInWorld = Camera.main.ScreenToWorldPoint(mousePosOnScreen);
             _mouseDir = new Vector2((mousePosInWorld - this.transform.position).normalized.x,
                 (mousePosInWorld - this.transform.position).normalized.y);
-        }
+        
     }
 
     private void ShowWhereWillMirrorLand()

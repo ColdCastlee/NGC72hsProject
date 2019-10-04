@@ -6,17 +6,27 @@ using UnityEngine;
 public class PlayerInput : MonoBehaviour
 {
     PlayerMovement player;
+    private CharacterAnimStateMouseBased _playerStateMachine;
 
-    void Start () {
+    private Vector2 _playerMoveInput;
+
+    public Vector2 PlayerMoveInput
+    {
+        get { return _playerMoveInput; }
+    }
+
+    void Start ()
+    {
+        _playerStateMachine = GetComponent<CharacterAnimStateMouseBased>();
         player = GetComponent<PlayerMovement> ();
     }
 
     private void FixedUpdate()
     {
-        Vector2 directionalInput = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical")).normalized;
-        player.SetDirectionalInput (directionalInput);
+        _playerMoveInput = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical")).normalized;
+        player.SetDirectionalInput (_playerMoveInput);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) && player._canDash)
         {
             //翻滚
             Vector2 dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
@@ -24,6 +34,8 @@ public class PlayerInput : MonoBehaviour
             {
                 return;
             }
+            
+            _playerStateMachine.BeginRoll(dir);
             player.Dash(dir);
         }
     }

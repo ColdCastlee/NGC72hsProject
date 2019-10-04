@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
 	private float _dashTime = .25f;
 	private float _dashSleepTime = .1f;
 	private float _dashSleepTimer = .1f;
-	private bool _canDash = true;
+	public bool _canDash = true;
 	private Vector2 _dashDir;
 
 	public bool _isDashing
