@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\Users\a\.Rider2018.2\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\a\.Rider2018.2\system\resharper-host\local\Transient\ReSharperHost\v182\SolutionCaches\_Reflection.-2017520036.00" t="ExcludeRecursive" />
-    <e p="D:\codingProjects\unity\NGC72hsProject\Reflection" t="IncludeRecursive">
+    <e p="C:\Users\john\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\john\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Reflection.-1397120070.00" t="ExcludeRecursive" />
+    <e p="D:\Users\john\Desktop\NGC72hsProject\Reflection" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="AstarPathfindingProject" t="Include">
@@ -211,6 +211,7 @@
             <e p="UnityReferenceHelper.cs" t="Include" />
           </e>
         </e>
+        <e p="AudioClipConfig.txt" t="Include" />
         <e p="CameraShake" t="Include">
           <e p="CameraShake.cs" t="Include" />
           <e p="CameraShakeManager.cs" t="Include" />
@@ -231,8 +232,16 @@
             <e p="StateMachineRunner.cs" t="Include" />
           </e>
         </e>
+        <e p="Resources" t="Include">
+          <e p="FadeBlack.shader" t="Include" />
+        </e>
         <e p="Scripts" t="Include">
           <e p="AbstractActorHealth.cs" t="Include" />
+          <e p="Audio" t="Include">
+            <e p="AudioMgr.cs" t="Include" />
+            <e p="AudioName.cs" t="Include" />
+            <e p="MemoryMgr.cs" t="Include" />
+          </e>
           <e p="BasicFrag.cs" t="Include" />
           <e p="Boss" t="Include">
             <e p="BossBehaviors.cs" t="Include" />
@@ -267,12 +276,16 @@
           <e p="trap.cs" t="Include" />
           <e p="UI" t="Include">
             <e p="ButtonPause.cs" t="Include" />
+            <e p="Fade.cs" t="Include" />
             <e p="Global.cs" t="Include" />
             <e p="loadingScene.cs" t="Include" />
-            <e p="SceneFadeInOut.cs" t="Include" />
             <e p="StartGame.cs" t="Include" />
+            <e p="UI_FadeInFadeOut.cs" t="Include" />
           </e>
           <e p="UIManager.cs" t="Include" />
+        </e>
+        <e p="StreamingAssets" t="Include">
+          <e p="AudioClipConfig.txt" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
@@ -305,14 +318,11 @@
       </e>
       <e p="AstarPathfindingProject.csproj" t="IncludeRecursive" />
       <e p="AstarPathfindingProjectEditor.csproj" t="IncludeRecursive" />
-      <e p="Library" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
       <e p="PackageToolsEditor.csproj" t="IncludeRecursive" />
       <e p="Reflection.sln" t="IncludeFlat" />
-      <e p="Temp" t="ExcludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-      </e>
+      <e p="Temp\bin" t="ExcludeRecursive" />
     </e>
   </component>
 </project>
