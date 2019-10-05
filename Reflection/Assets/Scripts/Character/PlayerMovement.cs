@@ -2,18 +2,29 @@
 using System.Collections.Generic;
 using Character;
 using UnityEngine;
+using MonsterLove.StateMachine;
 
 [RequireComponent(typeof(Controller2D))]
 public class PlayerMovement : MonoBehaviour
 {
-
-	private PlayerHealth _playerHealth;
+	public enum States
+	{
+		Roll,
+		RollSleep
+	}
+	private StateMachine<States> fsm;
 	
-	private float _dashTimer = .2f;
-	private float _dashTime = .25f;
-	private float _dashSleepTime = .1f;
-	private float _dashSleepTimer = .1f;
+	private PlayerHealth _playerHealth;
+
+	private float _dashTimer = .6f;
+	
+	private float _dashTime = .6f;
+	
+	private float _dashSleepTime = 0.3f;
+	private float _dashSleepTimer = .0f;
+	
 	public bool _canDash = true;
+	
 	private Vector2 _dashDir;
 
 	public bool _isDashing
@@ -33,7 +44,14 @@ public class PlayerMovement : MonoBehaviour
 
 	Vector2 directionalInput;
 
-	void Start() {
+	private void Awake()
+	{
+		fsm = StateMachine<States>.Initialize(this);
+	}
+
+	void Start() 
+	{
+		fsm.ChangeState(States.RollSleep);
 		controller = GetComponent<Controller2D> ();
 		_playerHealth = GetComponent<PlayerHealth>();
 	}
@@ -41,36 +59,6 @@ public class PlayerMovement : MonoBehaviour
 	private void FixedUpdate()
 	{
 		CalculateVelocity ();
-
-		if (_canDash)
-		{
-			if (_dashTimer < _dashTime)
-			{
-				//Debug.Log("Dashing.");
-				OnDashing();
-			}
-			else
-			{	//not dashing
-				OnDashEnd();
-			}			
-		}
-
-		if (!_canDash)
-		{
-			if (_dashSleepTimer < _dashSleepTime)
-			{
-				//begin sleep
-				_canDash = false;
-				_dashSleepTimer += Time.deltaTime;
-			}
-			else
-			{
-				//end sleep, can dash.
-				//Debug.Log("CAN DASH.");
-				_canDash = true;
-				_dashSleepTimer = _dashSleepTime;
-			}			
-		}
 		
 		controller.Move (velocity * Time.deltaTime, directionalInput);
 
@@ -83,15 +71,10 @@ public class PlayerMovement : MonoBehaviour
 			velocity.x = 0;
 		}
 	}
-
-	private void Update()
-	{
-		//
-	}
-
+	
 	public void BeginDashSleep()
 	{
-		_canDash = false;
+		_dashSleepTimer = 0.0f;
 	}
 
 	public void OnDashing()
@@ -103,10 +86,7 @@ public class PlayerMovement : MonoBehaviour
 	public void OnDashEnd()
 	{
 		_dashTimer = _dashTime;
-
-		BeginDashSleep();
 	}
-
 
 	public void SetDirectionalInput (Vector2 input) {
 		directionalInput = input;
@@ -118,12 +98,12 @@ public class PlayerMovement : MonoBehaviour
 		{
 			return;
 		}
+		
 		_dashDir = dir;
 		this.velocity = dir * moveSpeed;
-		_dashTimer = 0.0f;
-		
+		//Debug.Log("CHnage state to roll");
+		fsm.ChangeState(States.Roll);
 	}
-	
 
 	void CalculateVelocity() {
 		float targetVelocityX = directionalInput.x * moveSpeed;
@@ -133,4 +113,54 @@ public class PlayerMovement : MonoBehaviour
 		
 		//TODO::Round the whole velocity.
 	}
+	
+	
+	
+	//State Machine
+	void Roll_Enter()
+	{
+		_dashTimer = 0.0f;
+	}
+
+	void Roll_Update()
+	{
+		OnDashing();
+		if (_dashTimer > _dashTime)
+		{
+			_dashTimer = _dashTime;
+			fsm.ChangeState(States.RollSleep);
+		}
+	}
+
+	void Roll_Exit()
+	{
+		OnDashEnd();
+	}
+	
+	//ROLL SLEEP
+	void RollSleep_Enter()
+	{
+		BeginDashSleep();
+	}
+
+	void RollSleep_Update()
+	{
+		if (_dashSleepTimer < _dashSleepTime)
+		{
+			//begin sleep
+			_canDash = false;
+			_dashSleepTimer += Time.deltaTime;
+		}
+		else
+		{
+			_canDash = true;
+			_dashSleepTimer = _dashSleepTime;
+		}
+	}
+
+	void RollSleep_Exit()
+	{
+		
+	}
+	
 }

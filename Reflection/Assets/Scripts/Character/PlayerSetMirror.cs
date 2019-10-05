@@ -54,6 +54,7 @@ public class PlayerSetMirror : MonoBehaviour
     {
         UIManager.Instance.UpdatePlayerFrag(_collectedFragrants);
         UIManager.Instance.ChangeStaminaPercentage(1.0f - _slowEffectTimePassed/_maxSlowEffectTime);
+        UIManager.Instance.ChangeShieldPercentage(_curShieldValue);
     }
 
     
@@ -127,6 +128,10 @@ public class PlayerSetMirror : MonoBehaviour
         else
         {
             _curShieldValue += Time.deltaTime * 1 / shieldRecoverTime;
+            if (_curShieldValue > 1.0f)
+            {
+                _curShieldValue = 1.0f;
+            }
         }
     }
 

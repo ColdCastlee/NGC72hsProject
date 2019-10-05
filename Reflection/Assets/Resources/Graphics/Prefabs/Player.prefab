@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 845290045}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 1505909809}
   m_Father: {fileID: 7395248948895961000}
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.11792451, g: 0.9016753, b: 1, a: 0.4}
   m_FlipX: 0
@@ -287,9 +287,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 10911, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.0023497343, g: 1, b: 0, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 954569bb7d9048b49aa3683347620f9b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -312,8 +312,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _canDash: 1
-  moveSpeed: 2
-  dashSpeed: 2.5
+  moveSpeed: 4
+  dashSpeed: 5
 --- !u!114 &7395248948895961005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,21 +336,21 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.150733}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1.5, y: 1.5}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.59980106, y: 0.65721107}
   m_EdgeRadius: 0
 --- !u!114 &7395248948895961001
 MonoBehaviour:
@@ -386,13 +386,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 1
-  PlayerMaxHp: 10
+  PlayerMaxHp: 1
   PlayerOnHit:
     m_PersistentCalls:
       m_Calls: []
   PlayerOnDead:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1537240443}
+        m_MethodName: PlayerDied
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7395248948895961012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,7 +448,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7395248948895961004}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -459,9 +470,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7395248948895961004}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f618944d7353a248b80a00828740a8c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b56e76062f648d409f4878601006b32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _hasInput: 0
+  _isFacingUp: 0
+  _isFacingRight: 1
 --- !u!1001 &7395248949349049086
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -469,21 +483,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7395248948895961000}
     m_Modifications:
-    - target: {fileID: 1915254585032623565, guid: 2377b1bc924c9a4489f6f7f91ad9b234,
-        type: 3}
-      propertyPath: m_Name
-      value: MirrorHalf
-      objectReference: {fileID: 0}
-    - target: {fileID: 1915254585032623565, guid: 2377b1bc924c9a4489f6f7f91ad9b234,
-        type: 3}
-      propertyPath: m_Layer
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1915254585032623565, guid: 2377b1bc924c9a4489f6f7f91ad9b234,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4912841465949546655, guid: 2377b1bc924c9a4489f6f7f91ad9b234,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -538,6 +537,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912841465949546655, guid: 2377b1bc924c9a4489f6f7f91ad9b234,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4912841465949546655, guid: 2377b1bc924c9a4489f6f7f91ad9b234,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915254585032623565, guid: 2377b1bc924c9a4489f6f7f91ad9b234,
+        type: 3}
+      propertyPath: m_Name
+      value: MirrorHalf
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915254585032623565, guid: 2377b1bc924c9a4489f6f7f91ad9b234,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1915254585032623565, guid: 2377b1bc924c9a4489f6f7f91ad9b234,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1718219998390224999, guid: 2377b1bc924c9a4489f6f7f91ad9b234,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1718219998390224999, guid: 2377b1bc924c9a4489f6f7f91ad9b234,
         type: 3}

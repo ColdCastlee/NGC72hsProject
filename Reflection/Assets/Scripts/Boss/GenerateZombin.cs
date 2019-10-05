@@ -14,7 +14,7 @@ namespace Boss
 
         public void generateZombin()
         {
-            Debug.Log(generatePos.position);
+            //Debug.Log(generatePos.position);
             var zombin = Instantiate(Zombin, generatePos.position, Quaternion.identity);
             
         }

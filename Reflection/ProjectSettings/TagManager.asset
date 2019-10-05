@@ -6,6 +6,8 @@ TagManager:
   tags:
   - MirrorFragrant
   - Bullet
+  - Boss
+  - Zombie
   layers:
   - Default
   - TransparentFX

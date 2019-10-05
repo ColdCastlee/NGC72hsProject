@@ -9,6 +9,8 @@ public class UIManager : MonoBehaviour
     public TextMeshProUGUI PlayerHp;
     public TextMeshProUGUI PlayerFrag;
     public Slider StaminaSlider;
+    public Slider BossHpSlider;
+    public Slider ShieldSlider;
     
     
     private static UIManager _instance;
@@ -37,6 +39,24 @@ public class UIManager : MonoBehaviour
     public void ChangeStaminaPercentage(float percent)
     {
         StaminaSlider.value = percent;
+    }
+
+    public void ChangeBossHpPercentage(float percent)
+    {
+        BossHpSlider.value = percent;
+    }
+
+    public void ChangeShieldPercentage(float percent)
+    {
+        ShieldSlider.value = percent;
+        if (percent > 0.25f)
+        {
+            
+        }
+        else
+        {
+            
+        }
     }
 
     private void Update()

@@ -11,23 +11,25 @@ namespace Boss
         private Animator _bossAnimator;
         public UnityEvent BossOnHit;
         public UnityEvent BossOnDead;
-        public Slider _hpSilider;
 
         public float HealthPercentage => (float) Hp / (float) BossMaxHp;
 
         // Start is called before the first frame update
         void Start()
         {
+            this.Hp = 25;
           
             this.Hp = BossMaxHp;
             _bossAnimator = GetComponent<Animator>();
-            _hpSilider = gameObject.GetComponentInChildren<Slider>();
         }
 
         // Update is called once per frame
         void Update()
         {
             CheckDeath();
+            
+            var percent = (float)this.Hp / (float)this.BossMaxHp;
+            UIManager.Instance.ChangeBossHpPercentage(percent);
         }
 
         public override void CheckDeath()
@@ -44,7 +46,8 @@ namespace Boss
         {
             base.TakeDamage(damage);
 
-            _hpSilider.value = this.Hp;
+            var percent = 1.0f - (float)this.Hp / this.BossMaxHp;
+            UIManager.Instance.ChangeBossHpPercentage(percent);
             
             BossOnHit.Invoke();
             //粒子特效

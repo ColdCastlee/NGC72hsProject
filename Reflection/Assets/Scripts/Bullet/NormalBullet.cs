@@ -87,9 +87,9 @@ namespace Bullet
             //BOSS
             else if (hitTarget.gameObject.layer == LayerMask.NameToLayer("Boss"))
             {
-//                Debug.Log("Hit Boss");
                 if (_isRefelcted)
                 {
+                    Debug.Log("Hit Boss");
                     var bossHealth = hitTarget.transform.gameObject.GetComponent<BossHealth>();
                     bossHealth.TakeDamage(this.BulletAtkDamage);
                     Die();
@@ -126,7 +126,7 @@ namespace Bullet
                 mirrorScript.TakeDamage(1);
                 _isRefelcted = true;
                 this.MaxMoveSpeedXy *= 2;
-                BulletAtkDamage++;
+                BulletAtkDamage *= 2;
             }else if (hitTarget.gameObject.layer == LayerMask.NameToLayer("Collision"))
             {
                 this.Die();

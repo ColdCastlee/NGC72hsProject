@@ -24,8 +24,11 @@ public class BossBehaviors : MonoBehaviour
         CrazyAtk,
         LevelTwoInit,
         SpecialAtk,
-        Move
+        Move,
+        ZombieAtk
     }
+
+    private Animator _bossAnimator;
 
     private StateMachine<States> fsm;
 
@@ -44,8 +47,8 @@ public class BossBehaviors : MonoBehaviour
     private States lastState;
     private bool _secondStateMode = false;
     private bool _crazyMode = false;
-    
-    
+
+
     //基础射击
     [Header("基础射击")] [FormerlySerializedAs("ShootInterval")]
     public float BasicShootInterval = 0.5f;
@@ -78,9 +81,11 @@ public class BossBehaviors : MonoBehaviour
     //移动
     private float _b4MoveCountClock = 0.0f;
     public float HowManyTimeMoveOnce = 5.0f;
+    private float RandomMoveOnceTime = 5.0f;
+    private float _moveTimer = 0.0f;
     public float MoveInterval = 2.0f;
     public float MoveVelocity = 0.3f;
-    
+
     //Crazy Attack
     private float _overallCrazyAtkTime = 10.0f;
     public float CrazyShootVelocity = 2.0f;
@@ -114,10 +119,11 @@ public class BossBehaviors : MonoBehaviour
     public float generateInterval = 5f;
     private float curTime = 0;
     private GenerateZombin _zombin;
-    
+
     // Start is called before the first frame update
     void Start()
     {
+        _bossAnimator = GetComponent<Animator>();
         _bossHealth = GetComponent<BossHealth>();
         _bossMovement = GetComponent<BossMovement>();
         Player = GameObject.Find("Player");
@@ -132,8 +138,9 @@ public class BossBehaviors : MonoBehaviour
 
         if (fsm.State != States.Move)
         {
-            _b4MoveCountClock += Time.deltaTime;            
+            _b4MoveCountClock += Time.deltaTime;
         }
+
         if (_b4MoveCountClock > HowManyTimeMoveOnce)
         {
             _b4MoveCountClock = 0.0f;
@@ -147,23 +154,30 @@ public class BossBehaviors : MonoBehaviour
             _crazyMode = false;
             fsm.ChangeState(States.LevelTwoInit);
         }
+
         //一阶段狂化
         if (_bossHealth.HealthPercentage <= 0.75f && !_secondStateMode && !_crazyMode)
         {
             _crazyMode = true;
             fsm.ChangeState(States.CrazyAtk);
         }
+
         //二阶段狂化
         if (_bossHealth.HealthPercentage <= 0.25f && _secondStateMode && !_crazyMode)
         {
             _crazyMode = true;
             fsm.ChangeState(States.CrazyAtk);
         }
+
         //生成小僵尸
         curTime += Time.deltaTime;
 
         generateZombin();
+    }
 
+    private void MoveToPlayer()
+    {
+        
     }
 
     private void generateZombin()
@@ -174,6 +188,7 @@ public class BossBehaviors : MonoBehaviour
             curTime = 0;
         }
     }
+
     private void UpdateTargetDir()
     {
         Debug.DrawLine(this.transform.position, Player.transform.position, Color.black);
@@ -255,7 +270,7 @@ public class BossBehaviors : MonoBehaviour
             _crazyAtkTimer = 0.0f;
         }
     }
-    
+
     //30°无差别 15°偏角
     private void CrazyAtkSecondMode()
     {
@@ -271,7 +286,7 @@ public class BossBehaviors : MonoBehaviour
             _crazyAtkTimer = 0.0f;
         }
     }
-    
+
     //全方位角 10°无差别
     private void CrazyAtkThirdMode()
     {
@@ -287,7 +302,7 @@ public class BossBehaviors : MonoBehaviour
             _crazyAtkTimer = 0.0f;
         }
     }
-    
+
 
     //基本无差别函数
     private void GenerateDegreeWaveOnce(float degreeInterval, float offsetAngle)
@@ -309,9 +324,10 @@ public class BossBehaviors : MonoBehaviour
         }
     }
 
-    IEnumerator GenerateCircularWaveOnce(float angleFrom, float angleTo, float angleInterval, float fireInterval)
+    IEnumerator GenerateCircularWaveOnce(float angleFrom, float angleTo, float angleInterval, float fireInterval,
+        float offset = 0.0f)
     {
-        for (float angle = angleFrom  ; angle <= angleTo  ; angle += angleInterval)
+        for (float angle = angleFrom + offset; angle <= angleTo + offset; angle += angleInterval)
         {
             BgmPlayer.PlayEffect(AudioName._bossBullet);
            // AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
@@ -324,7 +340,7 @@ public class BossBehaviors : MonoBehaviour
         }
     }
 
-    
+
     //
     private void GenerateCavityWaveOnce(Vector2 dir)
     {
@@ -363,7 +379,7 @@ public class BossBehaviors : MonoBehaviour
         }
     }
 
-    
+
     private void UpdateVariables(bool isSecondState)
     {
         if (isSecondState)
@@ -376,14 +392,16 @@ public class BossBehaviors : MonoBehaviour
         }
     }
 
-    
+
     //TODO:: USE IENUMERATOR TO GENERATE FEW WAVES OF BULLET
 
     #region StateMachine
 
     //Level One Init
     IEnumerator LevelOneInit_Enter()
-    { 
+    {
+        _bossAnimator.Play("");
+     
         BgmPlayer.PlayBgm(AudioName._stage1_1);
 
         Debug.Log("Hello Young Man...");
@@ -393,9 +411,11 @@ public class BossBehaviors : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         fsm.ChangeState(States.BasicAtk);
     }
+
     //Level Two Init
     IEnumerator LevelTwoInit_Enter()
     {
+        
         BgmPlayer.PlayBgm(AudioName._stage2_1);
         AudioMgr.Instance.PlayEffect(AudioName._BossBomb);
         Debug.Log("Hello, I am...Your Master.");
@@ -405,26 +425,21 @@ public class BossBehaviors : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         fsm.ChangeState(States.BasicAtk);
     }
-    
-    
+
+
     //Basic Atk
     void BasicAtk_Enter()
     {
         if (!_secondStateMode)
         {
-            BasicShootInterval = 0.5f;
-            BasicShootVelocity = 1.5f;
+            BasicShootInterval = 0.6f;
+            BasicShootVelocity = 4.0f;
         }
         else
         {
-            BasicShootInterval = 0.4f;
-            BasicShootVelocity = 2.0f;
+            BasicShootInterval = 0.3f;
+            BasicShootVelocity = 4.5f;
         }
-
-        StartCoroutine(GenerateCircularWaveOnce(0.0f,360.0f,10.0f,0.05f));
-        
-        StartCoroutine(GenerateCircularWaveOnce(360.0f,0.0f,10.0f,0.05f));
-
     }
 
     void BasicAtk_Update()
@@ -440,7 +455,6 @@ public class BossBehaviors : MonoBehaviour
 
     void BasicAtk_Exit()
     {
-        _stateTimer = 0.0f;
         lastState = States.BasicAtk;
     }
 
@@ -449,13 +463,13 @@ public class BossBehaviors : MonoBehaviour
     {
         if (!_secondStateMode)
         {
-            CircularShootInterval = 0.5f;
-            CircularShootVelocity = 1.5f;
+            CircularShootInterval = 0.8f;
+            CircularShootVelocity = 4.0f;
         }
         else
         {
             CircularShootInterval = 0.4f;
-            CircularShootVelocity = 2.0f;
+            CircularShootVelocity = 4.5f;
         }
     }
 
@@ -486,6 +500,7 @@ public class BossBehaviors : MonoBehaviour
 
         if (_stateTimer > 2 * _overAllCircularTime)
         {
+            _stateTimer = 0.0f;
             fsm.ChangeState(States.SpecialAtk);
         }
     }
@@ -493,7 +508,6 @@ public class BossBehaviors : MonoBehaviour
     void CircularAtk_Exit()
     {
         lastState = States.CircularAtk;
-        _stateTimer = 0.0f;
     }
 
     //Crazy Atk
@@ -501,6 +515,8 @@ public class BossBehaviors : MonoBehaviour
     {
         if (!_secondStateMode)
         {
+            _crazyShootInterval = 0.6f;
+            CrazyShootVelocity = 4.0f;
            // AudioMgr.Instance.CloseEffect(AudioName._stage1_1);
 
            if (!isPlayedState1_2)
@@ -522,44 +538,51 @@ public class BossBehaviors : MonoBehaviour
             }
          
             _crazyShootInterval = 0.4f;
-            CrazyShootVelocity = 2.0f;
+            CrazyShootVelocity = 4.5f;
         }
     }
 
     void CrazyAtk_Update()
     {
         _stateTimer += Time.deltaTime;
-
-        if (_stateTimer % _overallCrazyAtkTime < _firstAtkModeTime)
+        
+        StartCoroutine(GenerateCircularWaveOnce(0.0f, 360.0f, 10.0f, 0.05f));
+        
+        if (_stateTimer % _overallCrazyAtkTime < _crazyFirstTime)
         {
             CrazyAtkFirstMode();
             //first Mode
         }
-        else if (_stateTimer % _overallCrazyAtkTime < _secondAtkModeTime)
+        else if (_stateTimer % _overallCrazyAtkTime < _crazySecondTime)
         {
             CrazyAtkSecondMode();
             //second Mode
         }
         else
         {
+            if (_secondStateMode)
+            {
+                StartCoroutine(GenerateCircularWaveOnce(0.0f, 90.0f, 10.0f, 0.05f, Random.Range(0,360)));
+            }
             CrazyAtkThirdMode();
             //Third Mode
         }
 
         if (_secondStateMode)
         {
+            CircularThirdMode();
             BasicAtk();
         }
 
         if (_stateTimer > _overallCrazyAtkTime)
         {
+            _stateTimer = 0.0f;
             fsm.ChangeState(States.BasicAtk);
         }
     }
 
     void CrazyAtk_Exit()
     {
-        _stateTimer = 0.0f;
         lastState = States.CrazyAtk;
     }
 
@@ -568,13 +591,13 @@ public class BossBehaviors : MonoBehaviour
     {
         if (!_secondStateMode)
         {
-            VirusShootInterval = 0.5f;
-            VirusShootVelocity = 1.5f;
+            VirusShootInterval = 0.4f;
+            VirusShootVelocity = 3.5f;
         }
         else
         {
-            VirusShootInterval = 0.4f;
-            VirusShootVelocity = 2.0f;
+            VirusShootInterval = 0.2f;
+            VirusShootVelocity = 4.0f;
         }
     }
 
@@ -592,13 +615,13 @@ public class BossBehaviors : MonoBehaviour
         }
         else
         {
+            _stateTimer = 0.0f;
             fsm.ChangeState(States.BasicAtk);
         }
     }
 
     void SpecialAtk_Exit()
     {
-        _stateTimer = 0.0f;
         lastState = States.SpecialAtk;
     }
 
@@ -607,22 +630,31 @@ public class BossBehaviors : MonoBehaviour
     {
         
     }
-    
+
     void Move_Update()
     {
         _bossMovement.Move(_targetDir);
-        _stateTimer += Time.deltaTime;
-        if (_stateTimer > MoveInterval)
+        
+        _bossAnimator.Play("Move");
+        
+        _moveTimer += Time.deltaTime;
+        if (_secondStateMode)
         {
-            fsm.ChangeState(lastState);   
+            BasicAtk();
+            BasicAtk();
+        }
+        
+        if (_moveTimer > MoveInterval)
+        {
+            fsm.ChangeState(lastState);
         }
     }
 
     void Move_Exit()
     {
         lastState = States.Move;
-        _stateTimer = 0.0f;
+        _moveTimer = 0.0f;
     }
-    
+
     #endregion
 }
