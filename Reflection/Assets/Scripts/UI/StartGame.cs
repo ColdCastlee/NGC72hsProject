@@ -11,10 +11,11 @@ public class StartGame : MonoBehaviour
 {
 
     public Button startButton;
-
+    private Fade fade;
     private void Awake()
     {
        this.gameObject.AddComponent<AudioMgr>();
+       fade = this.gameObject.GetComponent<Fade>();
     }
     void Start()
     {
@@ -29,11 +30,9 @@ public class StartGame : MonoBehaviour
         Global.GetInstance().loadName = "TestCharacterMovementScen";
         startButton.onClick.AddListener(() =>
         {
-            
-            Application.LoadLevel("loadingScene");
+            fade.m_Sprite.gameObject.SetActive(true);
+            fade.setIsActive();
         });
-
-
     }
     
 }

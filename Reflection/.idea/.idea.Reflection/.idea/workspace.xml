@@ -105,6 +105,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://D:/unity3d2.20/2019.2.7f2/Editor/Data/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Runtime/EventSystem/UIBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Boss/BossBehaviors.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Boss/BossHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/CharacterAnimControl.cs" root0="FORCE_HIGHLIGHTING" />
@@ -124,6 +125,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/StartGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/loadingScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0D555F45-51EF-4F4A-858F-0AE7C1078C2C/db/8fda2b1b/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/FadeIn.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/test_bulletControler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/trap.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Fade.cs" root0="FORCE_HIGHLIGHTING" />
@@ -168,20 +170,21 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/PlayerMovement.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/CharacterAnimStateMouseBased.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/PlayerInput.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartGame.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/Controller2D.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/PlayerSetMirror.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Boss/ZombinHealth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Boss/BossHealth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Boss/BossHealth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Audio/AudioAwake.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Fade.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/CharacterAnimControl.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Character/PlayerHealth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/EnermyAI.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Audio/AudioName.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Bullet/NormalBullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Boss/BossBehaviors.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartGame.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/Fade.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/FadeIn.cs" />
       </list>
     </option>
   </component>
@@ -248,7 +251,7 @@
       <workItem from="1570065760454" duration="42633000" />
       <workItem from="1570116493944" duration="7275000" />
       <workItem from="1570156633560" duration="36442000" />
-      <workItem from="1570244897268" duration="11345000" />
+      <workItem from="1570244897268" duration="14771000" />
     </task>
     <servers />
   </component>

@@ -23,27 +23,39 @@ public class Fade : MonoBehaviour
     //场景名称
     public string m_ScenesName;
 
+    private bool IsActive;
     // Use this for initialization
     void Start()
     {
-        //默认设置为淡入效果
         m_Statuss = FadeStatuss.FadeIn;
+        IsActive = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //控制透明值变化
-        if (m_Statuss == FadeStatuss.FadeIn)
+        if (IsActive)
         {
-            m_Alpha += m_UpdateTime * Time.deltaTime;
+            //控制透明值变化
+            if (m_Statuss == FadeStatuss.FadeIn)
+            {
+                m_Alpha += m_UpdateTime * Time.deltaTime;
+            }
+            else if (m_Statuss == FadeStatuss.FadeOut)
+            {
+                m_Alpha -= m_UpdateTime * Time.deltaTime;
+            }
+
+            UpdateColorAlpha();
         }
-//        else if (m_Statuss == FadeStatuss.FadeOut)
-//        {
-//            m_Alpha -= m_UpdateTime * Time.deltaTime;
-//        }
-        UpdateColorAlpha();
     }
+
+    public void setIsActive()
+    {
+        IsActive = true;
+        
+    }
+    
 
     void UpdateColorAlpha()
     {
@@ -55,13 +67,14 @@ public class Fade : MonoBehaviour
         //透明值等于的1的时候 转换成淡出效果
         if (m_Alpha > 1f)
         {
+            Application.LoadLevel("TestCharacterMovementScen");
             m_Alpha = 1f;
-            m_Statuss = FadeStatuss.FadeOut;
+            //m_Statuss = FadeStatuss.FadeOut;
         }
         //值为0的时候跳转场景
         else if (m_Alpha < 0)
         {
-            SceneManager.LoadScene(m_ScenesName);
+           // Application.LoadLevel("loadingScene");
         }
     }
 }
