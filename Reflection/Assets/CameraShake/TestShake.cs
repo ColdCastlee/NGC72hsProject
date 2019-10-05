@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 public class TestShake : MonoBehaviour
@@ -15,7 +16,7 @@ public class TestShake : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.U))
         {
-            CameraShakeManager.Instance.Play("CameraShake/Default");
+            GetComponent<CinemachineImpulseSource>().GenerateImpulse();
         }
     }
 }
