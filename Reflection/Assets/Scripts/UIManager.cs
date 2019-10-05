@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePlayerFrag(int frag)
     {
-        PlayerFrag.text = "X " + frag;
+        PlayerFrag.text = "X " + frag + " / 12";
     }
 
     public void ChangeStaminaPercentage(float percent)

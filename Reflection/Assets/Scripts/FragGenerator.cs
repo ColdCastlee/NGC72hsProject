@@ -12,7 +12,7 @@ public class FragGenerator : MonoBehaviour
 
     public LayerMask LayerToAvoid;
     
-    private int GeneratePositionsNum = 2;
+    private int GeneratePositionsNum = 3;
 
     public float MaxGenerateInterval = 8.0f;
     public float MinGenerateInterval = 4.0f;
