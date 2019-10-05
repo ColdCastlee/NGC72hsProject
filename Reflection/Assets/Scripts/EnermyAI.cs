@@ -21,6 +21,7 @@ public class EnermyAI : MonoBehaviour
     private int currentWaypoint = 0;
     
     
+    
     private Seeker _seeker;
     private Rigidbody2D _rigidbody2D;
     private Transform Boss;

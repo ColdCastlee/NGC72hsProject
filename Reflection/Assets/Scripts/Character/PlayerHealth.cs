@@ -125,6 +125,18 @@ namespace Character
     
         //TODO::加入动画状态机
     
+	    
+	    private void OnTriggerEnter2D(Collider2D other)
+	    {
+		    if (other.CompareTag("Boss"))    
+		    {
+			    Debug.Log("BOSS HIT ME");
+			    this.TakeDamage(1);
+		    }else if (other.CompareTag("Zombie"))
+		    {
+			    this.TakeDamage(1);
+		    }
+	    }
     
     }
 }

@@ -34,7 +34,6 @@ public class PlayerInput : MonoBehaviour
             {
                 return;
             }
-            
             _playerStateMachine.BeginRoll(dir);
             player.Dash(dir);
         }

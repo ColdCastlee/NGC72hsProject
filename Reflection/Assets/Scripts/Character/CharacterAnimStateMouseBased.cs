@@ -66,6 +66,11 @@ public class CharacterAnimStateMouseBased : MonoBehaviour
         fsm.ChangeState(States.Idle);
     }
 
+    public void PlayerDied()
+    {
+        fsm.ChangeState(States.Die);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -203,7 +208,7 @@ public class CharacterAnimStateMouseBased : MonoBehaviour
     }
     void Roll_Update()
     {
-        
+        CheckRollAnimation();
         if (!_playerMovementScript._isDashing)
         {
             fsm.ChangeState(States.Idle);
@@ -233,7 +238,7 @@ public class CharacterAnimStateMouseBased : MonoBehaviour
     }
     void Die_Update()
     {
-        
+        _playerAnimator.Play("Die");
     }
     void Die_Exit()
     {

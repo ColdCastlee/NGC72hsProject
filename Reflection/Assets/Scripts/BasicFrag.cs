@@ -64,13 +64,13 @@ public class BasicFrag : AbstractActorHealth
         switch (FragSize)
         {
             case 1:
-                _finalSize = 0.5f;
+                _finalSize = 0.7f;
                 break;
             case 2:
-                _finalSize = 0.8f;
+                _finalSize = 1.2f;
                 break;
             case 3:
-                _finalSize = 1.2f;
+                _finalSize = 1.7f;
                 break;
         }
 
