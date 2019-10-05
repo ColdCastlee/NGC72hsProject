@@ -22,7 +22,7 @@ namespace Boss
         {
             _spriteRenderer = GetComponent<SpriteRenderer>();
             this.Hp = BossMaxHp;
-            this.Hp = 51;
+            this.Hp = 1;
             _bossAnimator = GetComponent<Animator>();
         }
 

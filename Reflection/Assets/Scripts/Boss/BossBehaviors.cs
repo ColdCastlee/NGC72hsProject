@@ -7,6 +7,7 @@ using UnityEngine;
 using MonsterLove.StateMachine;
 using ReadyGamerOne.MemorySystem;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
@@ -759,6 +760,12 @@ public class BossBehaviors : MonoBehaviour
     {
         AudioMgr.Instance.BgmVolume = 0.0f;
         KillAllEnemies();
+        Invoke("LoadNewScene", 3.0f);
+    }
+
+    private void LoadNewScene()
+    {
+        SceneManager.LoadScene("lastScene");
     }
 
     void Die_Update()

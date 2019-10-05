@@ -67,7 +67,7 @@ public class Fade : MonoBehaviour
         //透明值等于的1的时候 转换成淡出效果
         if (m_Alpha > 1f)
         {
-            Application.LoadLevel("TestCharacterMovementScen");
+            SceneManager.LoadScene("GameScene");
             m_Alpha = 1f;
             //m_Statuss = FadeStatuss.FadeOut;
         }
