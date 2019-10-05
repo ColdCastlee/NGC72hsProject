@@ -124,7 +124,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/MemoryMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ButtonEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/StartGame.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/loadingScene.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/EndGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0D555F45-51EF-4F4A-858F-0AE7C1078C2C/db/8fda2b1b/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/FadeIn.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/test_bulletControler.cs" root0="FORCE_HIGHLIGHTING" />
@@ -132,13 +132,12 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Fade.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0D555F45-51EF-4F4A-858F-0AE7C1078C2C/d3/2cc1c53c/WaitForSeconds.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/AudioName.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.rider@1.1.0/Rider/Editor/RiderInitializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Boss/ZombinHealth.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UI_FadeInFadeOut.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/touchSpace.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/AudioMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnermyAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ButtonPause.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ide.rider@1.1.0/Rider/Editor/RiderInitializer.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Mirror.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/TimeScaleManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/BasicFrag.cs" root0="FORCE_HIGHLIGHTING" />
@@ -157,7 +156,6 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/AbstractActorHealth.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Bullet/AbstractBullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Bullet/BasicMove.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/TimeScaleManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/MirrorFragrant.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/BasicFrag.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" />
@@ -186,9 +184,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Boss/BossBehaviors.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Fade.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/FadeIn.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/touchSpace.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartGame.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/ButtonEvent.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/TimeScaleManager.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/ButtonPause.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/touchSpace.cs" />
       </list>
     </option>
   </component>
