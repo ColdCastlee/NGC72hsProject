@@ -16,11 +16,11 @@ public class PlayerMovement : MonoBehaviour
 	
 	private PlayerHealth _playerHealth;
 
-	private float _dashTimer = .6f;
+	private float _dashTimer = .5f;
 	
-	private float _dashTime = .6f;
+	private float _dashTime = .5f;
 	
-	private float _dashSleepTime = 0.3f;
+	private float _dashSleepTime = 0.2f;
 	private float _dashSleepTimer = .0f;
 	
 	public bool _canDash = true;

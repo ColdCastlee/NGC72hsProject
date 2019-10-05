@@ -234,6 +234,7 @@ public class PlayerSetMirror : MonoBehaviour
         this._collectedFragrants -= 2;
         var mirror = Instantiate(Mirror, this.transform.position + new Vector3(dir.x, dir.y, 0) * 0.12f, Quaternion.identity);
         var mirrorScript = mirror.GetComponent<Mirror>();
+        mirror.transform.right = dir;
         mirrorScript.Init(dir);
     }
 

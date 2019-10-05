@@ -17,7 +17,6 @@ namespace Boss
         // Start is called before the first frame update
         void Start()
         {
-            this.Hp = 25;
           
             this.Hp = BossMaxHp;
             _bossAnimator = GetComponent<Animator>();
@@ -39,7 +38,7 @@ namespace Boss
             //粒子特效
             //死亡动画
             BossOnDead.Invoke();
-            Destroy(this.gameObject, 2.0f);
+            Destroy(this.gameObject, 10.0f);
         }
 
         public override void TakeDamage(int damage)

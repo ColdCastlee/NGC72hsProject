@@ -26,7 +26,7 @@ public class PlayerInput : MonoBehaviour
         _playerMoveInput = new Vector2 (Input.GetAxisRaw ("Horizontal"), Input.GetAxisRaw ("Vertical")).normalized;
         player.SetDirectionalInput (_playerMoveInput);
 
-        if (Input.GetKeyDown(KeyCode.LeftShift) && player._canDash)
+        if (Input.GetKeyDown(KeyCode.Space) && player._canDash)
         {
             //翻滚
             Vector2 dir = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;

@@ -28,12 +28,12 @@ public class UIManager : MonoBehaviour
 
     public void UpdatePlayerHp(int hp)
     {
-        PlayerHp.text = "Hp: " + hp;
+        PlayerHp.text = "X " + hp;
     }
 
     public void UpdatePlayerFrag(int frag)
     {
-        PlayerFrag.text = "Frag: " + frag;
+        PlayerFrag.text = "X " + frag;
     }
 
     public void ChangeStaminaPercentage(float percent)
