@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ReadyGamerOne.MemorySystem;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -34,12 +35,19 @@ public class PlayerSetMirror : MonoBehaviour
     }
 
     //也有可能 需要杀死一定数量的怪物 才能进入下一个阶段
+    
 
 
     private void Start()
     {
         ShieldImg.SetActive(false);
         MirrorImg.SetActive(false);
+        this.gameObject.AddComponent<AudioMgr>();
+        MemoryMgr.LoadAssetFromResourceDir<AudioClip>(typeof(AudioName),"Audio/",(name,clip)=>
+        {
+            if(AudioMgr.Instance.audioclips.ContainsKey(name)==false)
+                AudioMgr.Instance.audioclips.Add(name, clip);
+        });
     }
 
     private void UpdateUI()
@@ -232,6 +240,7 @@ public class PlayerSetMirror : MonoBehaviour
             var mirrorFragScript = other.transform.GetComponent<BasicFrag>();
             if (this._collectedFragrants < MaxFragrantHoldNum && mirrorFragScript.FinishedInitializing)
             {
+                AudioMgr.Instance.PlayEffect(AudioName._pickUp);
                 mirrorFragScript.TakeDamage(1);
                 this._collectedFragrants += mirrorFragScript.FragSize;
                 if (this._collectedFragrants > MaxFragrantHoldNum)

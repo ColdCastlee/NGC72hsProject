@@ -14,7 +14,7 @@ public class StartGame : MonoBehaviour
 
     private void Awake()
     {
-        var play = this.gameObject.AddComponent<AudioMgr>();
+       this.gameObject.AddComponent<AudioMgr>();
     }
     void Start()
     {
@@ -24,8 +24,7 @@ public class StartGame : MonoBehaviour
                 AudioMgr.Instance.audioclips.Add(name, clip);
         });
         
-        
-        AudioMgr.Instance.PlayBgm(AudioName._1);
+        AudioMgr.Instance.PlayBgm(AudioName._start);
         
         Global.GetInstance().loadName = "TestCharacterMovementScen";
         startButton.onClick.AddListener(() =>

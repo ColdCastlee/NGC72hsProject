@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ReadyGamerOne.MemorySystem;
 using UnityEngine;
 
 public class Controller2D : RaycastController
@@ -8,11 +9,10 @@ public class Controller2D : RaycastController
 	public CollisionInfo collisions;
 	[HideInInspector]
 	public Vector2 playerInput;
-
+	
 	public override void Start() {
 		base.Start ();
 		collisions.faceDir = 1;
-
 	}
 
 	public void Move(Vector2 moveAmount, bool standingOnPlatform) {

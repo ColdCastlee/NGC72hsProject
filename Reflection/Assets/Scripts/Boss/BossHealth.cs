@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using ReadyGamerOne.MemorySystem;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ namespace Boss
         // Start is called before the first frame update
         void Start()
         {
+          
             this.Hp = BossMaxHp;
             _bossAnimator = GetComponent<Animator>();
             _hpSilider = gameObject.GetComponentInChildren<Slider>();

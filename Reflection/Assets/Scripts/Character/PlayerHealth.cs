@@ -1,4 +1,5 @@
 ﻿using Cinemachine;
+using ReadyGamerOne.MemorySystem;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -36,6 +37,12 @@ namespace Character
 	        _spriteRenderer = GetComponent<SpriteRenderer>();
             this.Hp = PlayerMaxHp<=0?1:PlayerMaxHp;
             _playerAnimator = GetComponent<Animator>();
+            this.gameObject.AddComponent<AudioMgr>();
+            MemoryMgr.LoadAssetFromResourceDir<AudioClip>(typeof(AudioName),"Audio/",(name,clip)=>
+            {
+	            if(AudioMgr.Instance.audioclips.ContainsKey(name)==false)
+		            AudioMgr.Instance.audioclips.Add(name, clip);
+            });
 	        
         }
 
@@ -110,7 +117,8 @@ namespace Character
 //	        Debug.Log(_invincible);
 //	        Debug.Log(_onHitInvincibleTimer);
 	        if (!_invincible)
-	        {
+	        { 
+		        AudioMgr.Instance.PlayEffect(AudioName._takeDamage);
 				base.TakeDamage(damage);
 				PlayerOnHit.Invoke();
 				global::TimeScaleManager.Instance.DoSlowMotionForSeconds(OnHitSlowTime);

@@ -1,8 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -32,7 +28,6 @@ public class Fade : MonoBehaviour
     {
         //默认设置为淡入效果
         m_Statuss = FadeStatuss.FadeIn;
-        m_ScenesName = "loadingScene";
     }
 
     // Update is called once per frame
@@ -43,10 +38,10 @@ public class Fade : MonoBehaviour
         {
             m_Alpha += m_UpdateTime * Time.deltaTime;
         }
-        else if (m_Statuss == FadeStatuss.FadeOut)
-        {
-            m_Alpha -= m_UpdateTime * Time.deltaTime;
-        }
+//        else if (m_Statuss == FadeStatuss.FadeOut)
+//        {
+//            m_Alpha -= m_UpdateTime * Time.deltaTime;
+//        }
         UpdateColorAlpha();
     }
 

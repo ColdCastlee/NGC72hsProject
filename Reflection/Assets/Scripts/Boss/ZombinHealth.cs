@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ReadyGamerOne.MemorySystem;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -19,6 +20,13 @@ namespace Boss
         {
             this.Hp = 1;
             _zombinAnimator = GetComponent<Animator>();
+            
+            this.gameObject.AddComponent<AudioMgr>();
+            MemoryMgr.LoadAssetFromResourceDir<AudioClip>(typeof(AudioName),"Audio/",(name,clip)=>
+            {
+                if(AudioMgr.Instance.audioclips.ContainsKey(name)==false)
+                    AudioMgr.Instance.audioclips.Add(name, clip);
+            });
         }
 
         // Update is called once per frame
@@ -31,6 +39,8 @@ namespace Boss
         {
             if (!IsDied()) return;
             //音效
+            AudioMgr.Instance.PlayEffect(AudioName._zombieDie);
+            Debug.Log("炸了");
             //粒子特效
             //死亡动画
             //人物消失

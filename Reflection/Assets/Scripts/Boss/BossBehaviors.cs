@@ -5,6 +5,7 @@ using Boss;
 using Bullet;
 using UnityEngine;
 using MonsterLove.StateMachine;
+using ReadyGamerOne.MemorySystem;
 using UnityEditor;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -88,11 +89,25 @@ public class BossBehaviors : MonoBehaviour
     private float _crazyFirstTime = 4.0f;
     private float _crazySecondTime = 7.0f;
     private float _crazyAtkTimer = 0.0f;
+    private AudioMgr BgmPlayer;
+    
+    
+    bool isPlayedState1_2 = false;
+    bool isPlayedState2_2 = false;
     
     
     private void Awake()
     {
         fsm = StateMachine<States>.Initialize(this);
+        
+        BgmPlayer = this.gameObject.AddComponent<AudioMgr>();
+        BgmPlayer.EffectVolume = 0.5f;
+        MemoryMgr.LoadAssetFromResourceDir<AudioClip>(typeof(AudioName),"Audio/",(name,clip)=>
+        {
+            if(AudioMgr.Instance.audioclips.ContainsKey(name)==false)
+                AudioMgr.Instance.audioclips.Add(name, clip);
+        });
+        
     }
 
     //小僵尸
@@ -169,10 +184,11 @@ public class BossBehaviors : MonoBehaviour
     private void BasicAtk()
     {
         _basicShootClock += Time.deltaTime;
-
+        
         if (_basicShootClock >= BasicShootInterval)
         {
             //TODO::PARENT
+           BgmPlayer.PlayEffect(AudioName._bossBullet);
             var bullet = Instantiate(Bullet, transform.position, Quaternion.identity);
             bullet.GetComponent<NormalBullet>().Init(BasicBulletDamage, _targetDir, BasicShootVelocity);
             //bullet.transform.right = _targetDir;
@@ -183,11 +199,13 @@ public class BossBehaviors : MonoBehaviour
     //90°无差别
     private void CircularFirstMode()
     {
+
         _circularShootClock += Time.deltaTime;
         if (_circularShootClock >= CircularShootInterval)
         {
             //TODO::PARENT
             GenerateDegreeWaveOnce(90, 0);
+            BgmPlayer.PlayEffect(AudioName._bossBullet);
             //bullet.transform.right = _targetDir;
             _circularShootClock = 0.0f;
         }
@@ -196,11 +214,13 @@ public class BossBehaviors : MonoBehaviour
     //90°倾斜无差别
     private void CircularSecondMode()
     {
+
         _circularShootClock += Time.deltaTime;
         if (_circularShootClock >= CircularShootInterval)
         {
             //TODO::PARENT
             GenerateDegreeWaveOnce(90, 45);
+            BgmPlayer.PlayEffect(AudioName._bossBullet);
             //bullet.transform.right = _targetDir;
             _circularShootClock = 0.0f;
         }
@@ -209,11 +229,13 @@ public class BossBehaviors : MonoBehaviour
     //45°无差别
     private void CircularThirdMode()
     {
+
         _circularShootClock += Time.deltaTime;
         if (_circularShootClock >= CircularShootInterval)
         {
             //TODO::PARENT
             GenerateDegreeWaveOnce(45, 0);
+            BgmPlayer.PlayEffect(AudioName._bossBullet);
             //bullet.transform.right = _targetDir;
             _circularShootClock = 0.0f;
         }
@@ -222,13 +244,14 @@ public class BossBehaviors : MonoBehaviour
     //30°无差别
     private void CrazyAtkFirstMode()
     {
+
         _crazyAtkTimer += Time.deltaTime;
         int randomAngle = Random.Range(0, 10);
         if (_crazyAtkTimer >= _crazyShootInterval)
         {
             //TODO::PARENT
             GenerateDegreeWaveOnce(30, 0 + randomAngle);
-            //bullet.transform.right = _targetDir;
+            BgmPlayer.PlayEffect(AudioName._bossBullet);
             _crazyAtkTimer = 0.0f;
         }
     }
@@ -236,12 +259,14 @@ public class BossBehaviors : MonoBehaviour
     //30°无差别 15°偏角
     private void CrazyAtkSecondMode()
     {
+
         _crazyAtkTimer += Time.deltaTime;
         int randomAngle = Random.Range(0, 10);
         if (_crazyAtkTimer >= _crazyShootInterval)
         {
             //TODO::PARENT
             GenerateDegreeWaveOnce(30, 0 + randomAngle + 15);
+            BgmPlayer.PlayEffect(AudioName._bossBullet);
             //bullet.transform.right = _targetDir;
             _crazyAtkTimer = 0.0f;
         }
@@ -250,12 +275,14 @@ public class BossBehaviors : MonoBehaviour
     //全方位角 10°无差别
     private void CrazyAtkThirdMode()
     {
+
         _crazyAtkTimer += Time.deltaTime;
         int randomAngle = Random.Range(0, 5);
         if (_crazyAtkTimer >= _crazyShootInterval)
         {
             //TODO::PARENT
             GenerateDegreeWaveOnce(10, 0 + randomAngle);
+            BgmPlayer.PlayEffect(AudioName._bossBullet);
             //bullet.transform.right = _targetDir;
             _crazyAtkTimer = 0.0f;
         }
@@ -268,8 +295,11 @@ public class BossBehaviors : MonoBehaviour
         //从offset Angle出发，每隔degreeInterval便射出一个子弹，直到360°
         int bulletNum = Mathf.FloorToInt(360.0f / degreeInterval);
         float theta = offsetAngle;
+
         for (int i = 0; i < bulletNum; i++)
         {
+        
+            BgmPlayer.PlayEffect(AudioName._bossBullet);
             theta = offsetAngle + i * degreeInterval;
             float dirX = Mathf.Cos(Mathf.Deg2Rad * theta);
             float dirY = Mathf.Sin(Mathf.Deg2Rad * theta);
@@ -283,6 +313,8 @@ public class BossBehaviors : MonoBehaviour
     {
         for (float angle = angleFrom  ; angle <= angleTo  ; angle += angleInterval)
         {
+            BgmPlayer.PlayEffect(AudioName._bossBullet);
+           // AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
             float dirX = Mathf.Cos(Mathf.Deg2Rad * angle);
             float dirY = Mathf.Sin(Mathf.Deg2Rad * angle);
             var bullet = Instantiate(Bullet, transform.position, Quaternion.identity);
@@ -308,7 +340,7 @@ public class BossBehaviors : MonoBehaviour
             {
                 continue;
             }
-
+            BgmPlayer.PlayEffect(AudioName._bossBullet);
             float dirX = Mathf.Cos(Mathf.Deg2Rad * theta);
             float dirY = Mathf.Sin(Mathf.Deg2Rad * theta);
             var bullet = Instantiate(Bullet, transform.position, Quaternion.identity);
@@ -322,6 +354,8 @@ public class BossBehaviors : MonoBehaviour
         _virusShootClock += Time.deltaTime;
         if (_virusShootClock > VirusShootInterval)
         {
+
+            BgmPlayer.PlayEffect(AudioName._bossBullet);
             var bullet = Instantiate(VirusBullet, transform.position, Quaternion.identity);
             bullet.GetComponent<VirusBullet>().Init(VirusShootDamage, Player, VirusShootVelocity, VirusBulletLiveTime);
             //bullet.transform.right = _targetDir;
@@ -349,7 +383,9 @@ public class BossBehaviors : MonoBehaviour
 
     //Level One Init
     IEnumerator LevelOneInit_Enter()
-    {
+    { 
+        BgmPlayer.PlayBgm(AudioName._stage1_1);
+
         Debug.Log("Hello Young Man...");
         yield return new WaitForSeconds(1.0f);
         Debug.Log("Let's Begin Our Dance...");
@@ -360,6 +396,8 @@ public class BossBehaviors : MonoBehaviour
     //Level Two Init
     IEnumerator LevelTwoInit_Enter()
     {
+        BgmPlayer.PlayBgm(AudioName._stage2_1);
+        AudioMgr.Instance.PlayEffect(AudioName._BossBomb);
         Debug.Log("Hello, I am...Your Master.");
         yield return new WaitForSeconds(1.0f);
         Debug.Log("So Can you please die for me?");
@@ -463,11 +501,26 @@ public class BossBehaviors : MonoBehaviour
     {
         if (!_secondStateMode)
         {
+           // AudioMgr.Instance.CloseEffect(AudioName._stage1_1);
+
+           if (!isPlayedState1_2)
+           {
+               BgmPlayer.PlayBgm(AudioName._stage1_2);
+               isPlayedState1_2 = true;
+           }
+            
             _crazyShootInterval = 0.5f;
             CrazyShootVelocity = 1.5f;
         }
         else
         {
+          
+            if (!isPlayedState2_2)
+            {
+                BgmPlayer.PlayBgm(AudioName._stage2_2);
+                isPlayedState2_2 = true;
+            }
+         
             _crazyShootInterval = 0.4f;
             CrazyShootVelocity = 2.0f;
         }
