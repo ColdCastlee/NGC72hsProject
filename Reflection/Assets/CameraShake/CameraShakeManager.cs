@@ -12,8 +12,6 @@ public class CameraShakeManager : MonoBehaviour {
 	/// Internal list of active camera shake components.
 	/// </summary>
 	private List<CameraShake> m_activeShakes = new List<CameraShake>();
-
-	public CameraShake ShakeResource;
 	
 	/// <summary>
 	/// Singleton reference.
@@ -72,11 +70,6 @@ public class CameraShakeManager : MonoBehaviour {
 	/// <param name="name">The resource name of the shake to play.</param>
 	/// <returns>A reference to the camera shake object.</returns>
 	public CameraShake Play(string name) {
-		if (name.Equals("Assigned"))
-		{
-			m_activeShakes.Add(ShakeResource);
-			return ShakeResource;
-		}
 		
 		var cs = Instantiate(Resources.Load<GameObject>(name), transform) as GameObject;
 		if (cs != null) {
