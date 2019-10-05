@@ -122,6 +122,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerInput.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Character/PlayerMovement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/MemoryMgr.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ButtonEvent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/StartGame.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/loadingScene.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0D555F45-51EF-4F4A-858F-0AE7C1078C2C/db/8fda2b1b/GameObject.cs" root0="SKIP_HIGHLIGHTING" />
@@ -183,10 +184,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Audio/AudioName.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Bullet/NormalBullet.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Boss/BossBehaviors.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartGame.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Fade.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/FadeIn.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/touchSpace.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartGame.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/ButtonEvent.cs" />
       </list>
     </option>
   </component>
@@ -254,6 +256,7 @@
       <workItem from="1570116493944" duration="7275000" />
       <workItem from="1570156633560" duration="36442000" />
       <workItem from="1570244897268" duration="18691000" />
+      <workItem from="1570287160279" duration="4029000" />
     </task>
     <servers />
   </component>

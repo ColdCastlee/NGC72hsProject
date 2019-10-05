@@ -7,11 +7,15 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
 using ReadyGamerOne.MemorySystem;
+using UnityEngine.UI;
+
 public class StartGame : MonoBehaviour
 {
 
     public Button startButton;
     private Fade fade;
+
+    private Color _color;
     private void Awake()
     {
        this.gameObject.AddComponent<AudioMgr>();
@@ -35,4 +39,5 @@ public class StartGame : MonoBehaviour
         });
     }
     
+
 }
