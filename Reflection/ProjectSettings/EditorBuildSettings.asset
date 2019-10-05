@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/lastScene.unity
     guid: 41652068e74ee0c4991cfdc0975b4fa5
+  - enabled: 1
+    path: Assets/Scenes/restart.unity
+    guid: 8cebdb492eb025a4e9e907db55942ab4
   m_configObjects: {}
