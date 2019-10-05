@@ -2,6 +2,7 @@
 using ReadyGamerOne.MemorySystem;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace Character
@@ -104,6 +105,7 @@ namespace Character
             //粒子特效
             //死亡动画
             //人物消失
+            SceneManager.LoadScene(4);
             PlayerOnDead.Invoke();
             Destroy(this.gameObject, 2.0f);
         }
