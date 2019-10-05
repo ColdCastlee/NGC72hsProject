@@ -366,7 +366,7 @@ public class BossBehaviors : MonoBehaviour
     //Level One Init
     IEnumerator LevelOneInit_Enter()
     {
-        
+        _bossAnimator.Play("");
         Debug.Log("Hello Young Man...");
         yield return new WaitForSeconds(1.0f);
         Debug.Log("Let's Begin Our Dance...");
@@ -578,7 +578,9 @@ public class BossBehaviors : MonoBehaviour
     void Move_Update()
     {
         _bossMovement.Move(_targetDir);
+        
         _bossAnimator.Play("Move");
+        
         _moveTimer += Time.deltaTime;
         if (_secondStateMode)
         {
