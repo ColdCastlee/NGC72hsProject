@@ -24,6 +24,8 @@ public class TimeScaleManager : MonoBehaviour
     private float _slowDownTimer = 0.0f;
     private bool _refillTimeScale = false;
     private float _slowDownTime = 1.0f;
+
+    private bool _isPausing = false;
     
 
     public void DoSlowMotion()
@@ -50,7 +52,7 @@ public class TimeScaleManager : MonoBehaviour
 
     public void RefillTimeScale()
     {
-        if (!_refillTimeScale)
+        if (!_refillTimeScale && _isPausing)
         {
             return;
         }
@@ -64,8 +66,24 @@ public class TimeScaleManager : MonoBehaviour
         }
     }
 
+    public void Pause()
+    {
+        this._isPausing = true;
+    }
+
+    public void Resume()
+    {
+        this._isPausing = false;
+    }
+
     private void Update()
     {
+        if (_isPausing)
+        {
+            Time.timeScale = 0.0f;
+        }
+
+        
         RefillTimeScale();
     }
 }
