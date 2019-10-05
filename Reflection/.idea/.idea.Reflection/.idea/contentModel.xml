@@ -284,6 +284,7 @@
             <e p="Global.cs" t="Include" />
             <e p="loadingScene.cs" t="Include" />
             <e p="StartGame.cs" t="Include" />
+            <e p="touchSpace.cs" t="Include" />
             <e p="UI_FadeInFadeOut.cs" t="Include" />
           </e>
           <e p="UIManager.cs" t="Include" />
