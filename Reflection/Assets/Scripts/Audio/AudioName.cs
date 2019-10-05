@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public static class AudioName
@@ -15,4 +16,7 @@ public static class AudioName
     public static readonly string _Shield = "盾反";
     public static readonly string _BossBomb = "boss一阶段爆炸";
     public static readonly string _bossBullet = "hit";
+    public static readonly string _buildMirror = "buildMirror";
+    public static readonly string _takeDamage2 = "hit02";
+    public static readonly string _takeDamage3 = "hit03";
 }

@@ -95,25 +95,22 @@ public class BossBehaviors : MonoBehaviour
     private float _crazyFirstTime = 4.0f;
     private float _crazySecondTime = 7.0f;
     private float _crazyAtkTimer = 0.0f;
-    private AudioMgr BgmPlayer;
-    
-    
+
+
     bool isPlayedState1_2 = false;
     bool isPlayedState2_2 = false;
-    
-    
+
+
     private void Awake()
     {
         fsm = StateMachine<States>.Initialize(this);
-        
-        BgmPlayer = this.gameObject.AddComponent<AudioMgr>();
-        BgmPlayer.EffectVolume = 0.5f;
-        MemoryMgr.LoadAssetFromResourceDir<AudioClip>(typeof(AudioName),"Audio/",(name,clip)=>
+
+        this.gameObject.AddComponent<AudioMgr>();
+        MemoryMgr.LoadAssetFromResourceDir<AudioClip>(typeof(AudioName), "Audio/", (name, clip) =>
         {
-            if(AudioMgr.Instance.audioclips.ContainsKey(name)==false)
+            if (AudioMgr.Instance.audioclips.ContainsKey(name) == false)
                 AudioMgr.Instance.audioclips.Add(name, clip);
         });
-        
     }
 
     //小僵尸
@@ -132,6 +129,7 @@ public class BossBehaviors : MonoBehaviour
         _zombin = gameObject.GetComponentInChildren<GenerateZombin>();
     }
 
+
     // Update is called once per frame
     void Update()
     {
@@ -142,7 +140,10 @@ public class BossBehaviors : MonoBehaviour
             _b4MoveCountClock += Time.deltaTime;
         }
 
-        if (_b4MoveCountClock > HowManyTimeMoveOnce)
+        if (_b4MoveCountClock > HowManyTimeMoveOnce &&
+            fsm.State != States.Die &&
+            fsm.State != States.LevelOneInit &&
+            fsm.State != States.LevelTwoInit)
         {
             _b4MoveCountClock = 0.0f;
             fsm.ChangeState(States.Move);
@@ -181,11 +182,6 @@ public class BossBehaviors : MonoBehaviour
         }
     }
 
-    private void MoveToPlayer()
-    {
-        
-    }
-
     private void generateZombin()
     {
         if (curTime >= generateInterval)
@@ -205,12 +201,27 @@ public class BossBehaviors : MonoBehaviour
     private void BasicAtk()
     {
         _basicShootClock += Time.deltaTime;
-        
+
         if (_basicShootClock >= BasicShootInterval)
         {
             //TODO::PARENT
-           BgmPlayer.PlayEffect(AudioName._bossBullet);
+            AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
             var bullet = Instantiate(Bullet, transform.position, Quaternion.identity);
+            bullet.GetComponent<NormalBullet>().Init(BasicBulletDamage, _targetDir, BasicShootVelocity);
+            //bullet.transform.right = _targetDir;
+            _basicShootClock = 0.0f;
+        }
+    }
+
+    private void BasicAtk(GameObject bulletPrefab)
+    {
+        _basicShootClock += Time.deltaTime;
+
+        if (_basicShootClock >= BasicShootInterval)
+        {
+            //TODO::PARENT
+            AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
+            var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
             bullet.GetComponent<NormalBullet>().Init(BasicBulletDamage, _targetDir, BasicShootVelocity);
             //bullet.transform.right = _targetDir;
             _basicShootClock = 0.0f;
@@ -220,13 +231,12 @@ public class BossBehaviors : MonoBehaviour
     //90°无差别
     private void CircularFirstMode()
     {
-
         _circularShootClock += Time.deltaTime;
         if (_circularShootClock >= CircularShootInterval)
         {
             //TODO::PARENT
             GenerateDegreeWaveOnce(90, 0);
-            BgmPlayer.PlayEffect(AudioName._bossBullet);
+            AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
             //bullet.transform.right = _targetDir;
             _circularShootClock = 0.0f;
         }
@@ -235,13 +245,12 @@ public class BossBehaviors : MonoBehaviour
     //90°倾斜无差别
     private void CircularSecondMode()
     {
-
         _circularShootClock += Time.deltaTime;
         if (_circularShootClock >= CircularShootInterval)
         {
             //TODO::PARENT
             GenerateDegreeWaveOnce(90, 45);
-            BgmPlayer.PlayEffect(AudioName._bossBullet);
+            AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
             //bullet.transform.right = _targetDir;
             _circularShootClock = 0.0f;
         }
@@ -250,13 +259,12 @@ public class BossBehaviors : MonoBehaviour
     //45°无差别
     private void CircularThirdMode()
     {
-
         _circularShootClock += Time.deltaTime;
         if (_circularShootClock >= CircularShootInterval)
         {
             //TODO::PARENT
             GenerateDegreeWaveOnce(45, 0);
-            BgmPlayer.PlayEffect(AudioName._bossBullet);
+            AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
             //bullet.transform.right = _targetDir;
             _circularShootClock = 0.0f;
         }
@@ -265,14 +273,13 @@ public class BossBehaviors : MonoBehaviour
     //30°无差别
     private void CrazyAtkFirstMode()
     {
-
         _crazyAtkTimer += Time.deltaTime;
         int randomAngle = Random.Range(0, 10);
         if (_crazyAtkTimer >= _crazyShootInterval)
         {
             //TODO::PARENT
             GenerateDegreeWaveOnce(30, 0 + randomAngle);
-            BgmPlayer.PlayEffect(AudioName._bossBullet);
+            AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
             _crazyAtkTimer = 0.0f;
         }
     }
@@ -280,14 +287,13 @@ public class BossBehaviors : MonoBehaviour
     //30°无差别 15°偏角
     private void CrazyAtkSecondMode()
     {
-
         _crazyAtkTimer += Time.deltaTime;
         int randomAngle = Random.Range(0, 10);
         if (_crazyAtkTimer >= _crazyShootInterval)
         {
             //TODO::PARENT
             GenerateDegreeWaveOnce(30, 0 + randomAngle + 15);
-            BgmPlayer.PlayEffect(AudioName._bossBullet);
+            AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
             //bullet.transform.right = _targetDir;
             _crazyAtkTimer = 0.0f;
         }
@@ -296,14 +302,13 @@ public class BossBehaviors : MonoBehaviour
     //全方位角 10°无差别
     private void CrazyAtkThirdMode()
     {
-
         _crazyAtkTimer += Time.deltaTime;
         int randomAngle = Random.Range(0, 5);
         if (_crazyAtkTimer >= _crazyShootInterval)
         {
             //TODO::PARENT
             GenerateDegreeWaveOnce(10, 0 + randomAngle);
-            BgmPlayer.PlayEffect(AudioName._bossBullet);
+            AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
             //bullet.transform.right = _targetDir;
             _crazyAtkTimer = 0.0f;
         }
@@ -316,17 +321,53 @@ public class BossBehaviors : MonoBehaviour
         //从offset Angle出发，每隔degreeInterval便射出一个子弹，直到360°
         int bulletNum = Mathf.FloorToInt(360.0f / degreeInterval);
         float theta = offsetAngle;
-
         for (int i = 0; i < bulletNum; i++)
         {
-        
-            BgmPlayer.PlayEffect(AudioName._bossBullet);
             theta = offsetAngle + i * degreeInterval;
             float dirX = Mathf.Cos(Mathf.Deg2Rad * theta);
             float dirY = Mathf.Sin(Mathf.Deg2Rad * theta);
             var bullet = Instantiate(Bullet, transform.position, Quaternion.identity);
             bullet.GetComponent<NormalBullet>()
                 .Init(CircularBulletDamage, new Vector2(dirX, dirY), CircularShootVelocity);
+        }
+
+        AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
+    }
+
+    //基本无差别函数-改
+    private void GenerateDegreeWaveOnce(GameObject Prefab, float degreeInterval, float offsetAngle)
+    {
+        //从offset Angle出发，每隔degreeInterval便射出一个子弹，直到360°
+        int bulletNum = Mathf.FloorToInt(360.0f / degreeInterval);
+        float theta = offsetAngle;
+
+        for (int i = 0; i < bulletNum; i++)
+        {
+            theta = offsetAngle + i * degreeInterval;
+            float dirX = Mathf.Cos(Mathf.Deg2Rad * theta);
+            float dirY = Mathf.Sin(Mathf.Deg2Rad * theta);
+            var bullet = Instantiate(Prefab, transform.position, Quaternion.identity);
+            bullet.GetComponent<NormalBullet>()
+                .Init(CircularBulletDamage, new Vector2(dirX, dirY), CircularShootVelocity);
+        }
+
+        AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
+    }
+
+    IEnumerator GenerateCircularWaveOnce(GameObject bulletPrefab, float angleFrom, float angleTo, float angleInterval,
+        float fireInterval,
+        float offset = 0.0f)
+    {
+        for (float angle = angleFrom + offset; angle <= angleTo + offset; angle += angleInterval)
+        {
+            // AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
+            float dirX = Mathf.Cos(Mathf.Deg2Rad * angle);
+            float dirY = Mathf.Sin(Mathf.Deg2Rad * angle);
+            var bullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            bullet.GetComponent<NormalBullet>()
+                .Init(CircularBulletDamage, new Vector2(dirX, dirY), CircularShootVelocity);
+            AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
+            yield return new WaitForSeconds(fireInterval);
         }
     }
 
@@ -335,13 +376,13 @@ public class BossBehaviors : MonoBehaviour
     {
         for (float angle = angleFrom + offset; angle <= angleTo + offset; angle += angleInterval)
         {
-            BgmPlayer.PlayEffect(AudioName._bossBullet);
-           // AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
+            // AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
             float dirX = Mathf.Cos(Mathf.Deg2Rad * angle);
             float dirY = Mathf.Sin(Mathf.Deg2Rad * angle);
             var bullet = Instantiate(Bullet, transform.position, Quaternion.identity);
             bullet.GetComponent<NormalBullet>()
                 .Init(CircularBulletDamage, new Vector2(dirX, dirY), CircularShootVelocity);
+            AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
             yield return new WaitForSeconds(fireInterval);
         }
     }
@@ -362,11 +403,12 @@ public class BossBehaviors : MonoBehaviour
             {
                 continue;
             }
-            BgmPlayer.PlayEffect(AudioName._bossBullet);
+
             float dirX = Mathf.Cos(Mathf.Deg2Rad * theta);
             float dirY = Mathf.Sin(Mathf.Deg2Rad * theta);
             var bullet = Instantiate(Bullet, transform.position, Quaternion.identity);
             bullet.GetComponent<NormalBullet>().Init(BasicBulletDamage, new Vector2(dirX, dirY), BasicShootVelocity);
+            AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
         }
     }
 
@@ -376,25 +418,20 @@ public class BossBehaviors : MonoBehaviour
         _virusShootClock += Time.deltaTime;
         if (_virusShootClock > VirusShootInterval)
         {
-
-            BgmPlayer.PlayEffect(AudioName._bossBullet);
             var bullet = Instantiate(VirusBullet, transform.position, Quaternion.identity);
             bullet.GetComponent<VirusBullet>().Init(VirusShootDamage, Player, VirusShootVelocity, VirusBulletLiveTime);
             //bullet.transform.right = _targetDir;
             _virusShootClock = 0.0f;
+            AudioMgr.Instance.PlayEffect(AudioName._bossBullet);
         }
     }
 
-
-    private void UpdateVariables(bool isSecondState)
+    private void KillAllEnemies()
     {
-        if (isSecondState)
+        var enemies = GameObject.FindGameObjectsWithTag("Zombie");
+        foreach (var enemy in enemies)
         {
-            
-        }
-        else
-        {
-            
+            enemy.GetComponent<ZombinHealth>().TakeDamage(1);
         }
     }
 
@@ -407,28 +444,30 @@ public class BossBehaviors : MonoBehaviour
     IEnumerator LevelOneInit_Enter()
     {
         _bossAnimator.Play("FirstStateInit");
-     
-        BgmPlayer.PlayBgm(AudioName._stage1_1);
-
         Debug.Log("Hello Young Man...");
         yield return new WaitForSeconds(1.0f);
         Debug.Log("Let's Begin Our Dance...");
         //动画 镜头 角色移动 镜子出现
         yield return new WaitForSeconds(4.0f);
+        AudioMgr.Instance.PlayBgm(AudioName._stage1_1);
         fsm.ChangeState(States.BasicAtk);
     }
 
     //Level Two Init
     IEnumerator LevelTwoInit_Enter()
     {
+        TimeScaleManager.Instance.DoSlowMotionForSeconds(1.0f);
         _bossAnimator.Play("SecondStateInit");
-        BgmPlayer.PlayBgm(AudioName._stage2_1);
+        this.MoveVelocity *= 2;
+        AudioMgr.Instance.BgmVolume = 0.0f;
         AudioMgr.Instance.PlayEffect(AudioName._BossBomb);
         Debug.Log("Hello, I am...Your Master.");
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(10.0f);
         Debug.Log("So Can you please die for me?");
         //动画 镜头 角色移动 镜子出现
-        yield return new WaitForSeconds(9.0f);
+        AudioMgr.Instance.BgmVolume = 1.0f;
+        AudioMgr.Instance.PlayBgm(AudioName._stage2_1);
+        yield return new WaitForSeconds(3.0f);
         fsm.ChangeState(States.BasicAtk);
     }
 
@@ -450,11 +489,10 @@ public class BossBehaviors : MonoBehaviour
 
     void BasicAtk_Update()
     {
-        
         _stateTimer += Time.deltaTime;
-        
+
         BasicAtk();
-        
+
         if (_secondStateMode)
         {
             _bossAnimator.Play("SecondStateBasic");
@@ -463,13 +501,12 @@ public class BossBehaviors : MonoBehaviour
         {
             _bossAnimator.Play("BasicAtkUpdate");
         }
-        
+
         if (_stateTimer > _changeStateTime)
         {
             _stateTimer = 0.0f;
             fsm.ChangeState(States.CircularAtk);
         }
-        
     }
 
     void BasicAtk_Exit()
@@ -487,6 +524,7 @@ public class BossBehaviors : MonoBehaviour
         }
         else
         {
+            GenerateDegreeWaveOnce(VirusBullet, 30, 0);
             CircularShootInterval = 0.4f;
             CircularShootVelocity = 4.5f;
         }
@@ -495,7 +533,7 @@ public class BossBehaviors : MonoBehaviour
     void CircularAtk_Update()
     {
         _stateTimer += Time.deltaTime;
-        
+
         if (_stateTimer % _overAllCircularTime < _firstAtkModeTime)
         {
             CircularFirstMode();
@@ -535,45 +573,53 @@ public class BossBehaviors : MonoBehaviour
     }
 
     //Crazy Atk
-    void CrazyAtk_Enter()
+    IEnumerator CrazyAtk_Enter()
     {
-        StartCoroutine(GenerateCircularWaveOnce(0.0f, 360.0f, 10.0f, 0.05f,Random.Range(0,360)));
+        if (_secondStateMode)
+        {
+            _bossAnimator.Play("Boss2Crazy");
+        }
+        else
+        {
+            _bossAnimator.Play("Boss1Crazy");
+        }
         
+        yield return new WaitForSeconds(3.0f);
+
         if (!_secondStateMode)
         {
             _crazyShootInterval = 0.6f;
             CrazyShootVelocity = 4.0f;
-           // AudioMgr.Instance.CloseEffect(AudioName._stage1_1);
+            // AudioMgr.Instance.CloseEffect(AudioName._stage1_1);
 
-           if (!isPlayedState1_2)
-           {
-               BgmPlayer.PlayBgm(AudioName._stage1_2);
-               isPlayedState1_2 = true;
-           }
-            
+            if (!isPlayedState1_2)
+            {
+                AudioMgr.Instance.PlayBgm(AudioName._stage1_2);
+                isPlayedState1_2 = true;
+            }
+
             _crazyShootInterval = 0.5f;
             CrazyShootVelocity = 1.5f;
         }
         else
         {
-          
             if (!isPlayedState2_2)
             {
-                BgmPlayer.PlayBgm(AudioName._stage2_2);
+                AudioMgr.Instance.PlayBgm(AudioName._stage2_2);
                 isPlayedState2_2 = true;
             }
-         
+
             _crazyShootInterval = 0.4f;
             CrazyShootVelocity = 4.5f;
         }
+
+        StartCoroutine(GenerateCircularWaveOnce(0.0f, 360.0f, 30.0f, 0.05f, Random.Range(0, 360)));
     }
 
     void CrazyAtk_Update()
     {
         _stateTimer += Time.deltaTime;
-        
-        
-        
+
         if (_stateTimer % _overallCrazyAtkTime < _crazyFirstTime)
         {
             CrazyAtkFirstMode();
@@ -598,7 +644,15 @@ public class BossBehaviors : MonoBehaviour
 
         if (_stateTimer > _overallCrazyAtkTime)
         {
-            StartCoroutine(GenerateCircularWaveOnce(0.0f, 360.0f, 10.0f, 0.05f,Random.Range(0,360)));
+            if (_secondStateMode)
+            {
+                StartCoroutine(GenerateCircularWaveOnce(0.0f, 360.0f, 20.0f, 0.05f, Random.Range(0, 360)));
+            }
+            else
+            {
+                StartCoroutine(GenerateCircularWaveOnce(0.0f, 360.0f, 30.0f, 0.05f, Random.Range(0, 360)));
+            }
+
             _stateTimer = 0.0f;
             fsm.ChangeState(States.BasicAtk);
         }
@@ -608,8 +662,9 @@ public class BossBehaviors : MonoBehaviour
     {
         if (_secondStateMode)
         {
-            StartCoroutine(GenerateCircularWaveOnce(0.0f, 360.0f, 10.0f, 0.05f,Random.Range(0,360)));
+            StartCoroutine(GenerateCircularWaveOnce(0.0f, 360.0f, 20.0f, 0.05f, Random.Range(0, 360)));
         }
+
         lastState = States.CrazyAtk;
     }
 
@@ -618,13 +673,13 @@ public class BossBehaviors : MonoBehaviour
     {
         if (!_secondStateMode)
         {
-            VirusShootInterval = 0.4f;
+            VirusShootInterval = 0.5f;
             VirusShootVelocity = 3.5f;
         }
         else
         {
-            VirusShootInterval = 0.2f;
-            VirusShootVelocity = 4.0f;
+            VirusShootInterval = 0.3f;
+            VirusShootVelocity = 3.8f;
         }
     }
 
@@ -663,7 +718,6 @@ public class BossBehaviors : MonoBehaviour
     //MOVE State
     void Move_Enter()
     {
-        
     }
 
     void Move_Update()
@@ -675,16 +729,20 @@ public class BossBehaviors : MonoBehaviour
         }
         else
         {
-            _bossAnimator.Play("Move");            
+            _bossAnimator.Play("Move");
         }
-        
+
         _moveTimer += Time.deltaTime;
         if (_secondStateMode)
         {
             BasicAtk();
+            BasicAtk(VirusBullet);
+        }
+        else
+        {
             BasicAtk();
         }
-        
+
         if (_moveTimer > MoveInterval)
         {
             fsm.ChangeState(lastState);
@@ -695,6 +753,12 @@ public class BossBehaviors : MonoBehaviour
     {
         lastState = States.Move;
         _moveTimer = 0.0f;
+    }
+
+    void Die_Enter()
+    {
+        AudioMgr.Instance.BgmVolume = 0.0f;
+        KillAllEnemies();
     }
 
     void Die_Update()

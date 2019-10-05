@@ -7,21 +7,20 @@ using UnityEngine.Serialization;
 
 public class PlayerSetMirror : MonoBehaviour
 {
-    
     //立盾
     public bool _settingShield;
     private float maxShieldTime = 2.0f;
     private float shieldRecoverTime = 10.0f;
     private float _curShieldValue = 1.0f;
     public GameObject ShieldImg;
-    
+
     //
     private int _collectedFragrants = 0;
     public int MaxFragrantHoldNum = 12;
 
     private float _maxSlowEffectTime = 2.0f;
     private float _slowEffectTimePassed = 0.0f;
-    
+
     private Vector2 _mouseDir;
     private bool _isSettingMirror = false;
 
@@ -35,47 +34,45 @@ public class PlayerSetMirror : MonoBehaviour
     }
 
     //也有可能 需要杀死一定数量的怪物 才能进入下一个阶段
-    
-
 
     private void Start()
     {
         ShieldImg.SetActive(false);
         MirrorImg.SetActive(false);
-        this.gameObject.AddComponent<AudioMgr>();
-        MemoryMgr.LoadAssetFromResourceDir<AudioClip>(typeof(AudioName),"Audio/",(name,clip)=>
-        {
-            if(AudioMgr.Instance.audioclips.ContainsKey(name)==false)
-                AudioMgr.Instance.audioclips.Add(name, clip);
-        });
+//        this.gameObject.AddComponent<AudioMgr>();
+//        MemoryMgr.LoadAssetFromResourceDir<AudioClip>(typeof(AudioName), "Audio/", (name, clip) =>
+//        {
+//            if (AudioMgr.Instance.audioclips.ContainsKey(name) == false)
+//                AudioMgr.Instance.audioclips.Add(name, clip);
+//        });
     }
 
     private void UpdateUI()
     {
         UIManager.Instance.UpdatePlayerFrag(_collectedFragrants);
-        UIManager.Instance.ChangeStaminaPercentage(1.0f - _slowEffectTimePassed/_maxSlowEffectTime);
+        UIManager.Instance.ChangeStaminaPercentage(1.0f - _slowEffectTimePassed / _maxSlowEffectTime);
         UIManager.Instance.ChangeShieldPercentage(_curShieldValue);
     }
 
-    
+
     // Update is called once per frame
     void Update()
     {
-
         UpdateUI();
-        
-        
+
+
         if (Input.GetMouseButtonDown(0) && _collectedFragrants >= 2)
         {
             Debug.Log("Slow");
             _isSettingMirror = true;
-        }else if(Input.GetMouseButtonDown(0) && _collectedFragrants <= 2)
+        }
+        else if (Input.GetMouseButtonDown(0) && _collectedFragrants <= 2)
         {
             //播放音效
             Debug.Log("Not Enough Ammo.");
         }
 
-        if (Input.GetMouseButtonUp(0)&& _collectedFragrants >= 2 && _isSettingMirror)
+        if (Input.GetMouseButtonUp(0) && _collectedFragrants >= 2 && _isSettingMirror)
         {
             SetDownMirror();
         }
@@ -104,13 +101,13 @@ public class PlayerSetMirror : MonoBehaviour
         }
 
         HandleShieldValue();
-        
+
         HandleTimeScale();
 
         UpdateMouseDir();
 
         ShowWhereWillMirrorLand();
-        
+
         ShowShield();
     }
 
@@ -149,12 +146,11 @@ public class PlayerSetMirror : MonoBehaviour
             {
                 ShieldImg.SetActive(true);
             }
-            
+
             ShieldImg.transform.localRotation = Quaternion.Euler(new Vector3(_mouseDir.x, _mouseDir.y, 0));
             ShieldImg.transform.right = new Vector3(_mouseDir.x, _mouseDir.y, 0);
-            
+
             //Debug.Log(_mouseDir);
-            
         }
         else
         {
@@ -164,7 +160,7 @@ public class PlayerSetMirror : MonoBehaviour
             }
         }
     }
-    
+
     private void SetDownMirror()
     {
         _isSettingMirror = false;
@@ -178,9 +174,10 @@ public class PlayerSetMirror : MonoBehaviour
         if (!_isSettingMirror)
         {
             global::TimeScaleManager.Instance.ResetTimeScale();
-            
+
             return;
         }
+
         global::TimeScaleManager.Instance.DoSlowMotion();
         _slowEffectTimePassed += Time.unscaledDeltaTime;
         if (_slowEffectTimePassed > _maxSlowEffectTime)
@@ -188,20 +185,16 @@ public class PlayerSetMirror : MonoBehaviour
             SetDownMirror();
             _slowEffectTimePassed = 0.0f;
         }
-        
-        
     }
 
     private void UpdateMouseDir()
     {
-
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
-            Vector3 mousePosOnScreen = Input.mousePosition;
-            mousePosOnScreen.z = screenPos.z;
-            Vector3 mousePosInWorld = Camera.main.ScreenToWorldPoint(mousePosOnScreen);
-            _mouseDir = new Vector2((mousePosInWorld - this.transform.position).normalized.x,
-                (mousePosInWorld - this.transform.position).normalized.y);
-        
+        Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+        Vector3 mousePosOnScreen = Input.mousePosition;
+        mousePosOnScreen.z = screenPos.z;
+        Vector3 mousePosInWorld = Camera.main.ScreenToWorldPoint(mousePosOnScreen);
+        _mouseDir = new Vector2((mousePosInWorld - this.transform.position).normalized.x,
+            (mousePosInWorld - this.transform.position).normalized.y);
     }
 
     private void ShowWhereWillMirrorLand()
@@ -211,11 +204,10 @@ public class PlayerSetMirror : MonoBehaviour
             if (MirrorImg.activeSelf)
             {
                 MirrorImg.SetActive(false);
-                
-            }    
+            }
+
             return;
         }
-        //TODO::半透明效果
 
         if (!MirrorImg.activeSelf)
         {
@@ -225,45 +217,27 @@ public class PlayerSetMirror : MonoBehaviour
         MirrorImg.transform.position = this.transform.position + new Vector3(_mouseDir.x, _mouseDir.y, 0) * 0.12f;
         MirrorImg.transform.localRotation = Quaternion.Euler(new Vector3(_mouseDir.x, _mouseDir.y, 0));
         MirrorImg.transform.right = new Vector3(_mouseDir.x, _mouseDir.y, 0);
-        
     }
 
     private void BuildMirror(Vector2 dir)
     {
         //TODO::PARENT
+        //TODO::建立音效
+        AudioMgr.Instance.PlayEffect(AudioName._buildMirror);
         this._collectedFragrants -= 2;
-        var mirror = Instantiate(Mirror, this.transform.position + new Vector3(dir.x, dir.y, 0) * 0.12f, Quaternion.identity);
+        var mirror = Instantiate(Mirror, this.transform.position + new Vector3(dir.x, dir.y, 0) * 0.12f,
+            Quaternion.identity);
         var mirrorScript = mirror.GetComponent<Mirror>();
         mirror.transform.right = dir;
         mirrorScript.Init(dir);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.transform.CompareTag("MirrorFragrant"))    
-        {
-            //Debug.Log("CollectedSomething?");
-            var mirrorFragScript = other.transform.GetComponent<BasicFrag>();
-            if (this._collectedFragrants < MaxFragrantHoldNum && mirrorFragScript.FinishedInitializing)
-            {
-                AudioMgr.Instance.PlayEffect(AudioName._pickUp);
-                mirrorFragScript.TakeDamage(1);
-                this._collectedFragrants += mirrorFragScript.FragSize;
-                if (this._collectedFragrants > MaxFragrantHoldNum)
-                {
-                    this._collectedFragrants = MaxFragrantHoldNum;
-                }
-            }
-            
-        }
-    }
-
-
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("MirrorFragrant"))    
+        if (other.CompareTag("MirrorFragrant"))
         {
             //Debug.Log("CollectedSomething?");
+            AudioMgr.Instance.PlayEffect(AudioName._pickUp);
             var mirrorFragScript = other.GetComponent<BasicFrag>();
             if (this._collectedFragrants < MaxFragrantHoldNum && mirrorFragScript.FinishedInitializing)
             {
@@ -274,8 +248,6 @@ public class PlayerSetMirror : MonoBehaviour
                     this._collectedFragrants = MaxFragrantHoldNum;
                 }
             }
-            
         }
     }
 }
-

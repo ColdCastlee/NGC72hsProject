@@ -81,8 +81,8 @@ GameObject:
   - component: {fileID: 2437126190705239322}
   - component: {fileID: 4924721386696055192}
   - component: {fileID: 8458807434879492744}
-  - component: {fileID: -801509328248027241}
   - component: {fileID: 7666257584477116533}
+  - component: {fileID: 312912372453396074}
   m_Layer: 0
   m_Name: VirusBullet
   m_TagString: Bullet
@@ -171,22 +171,8 @@ MonoBehaviour:
   BulletMoveDir: {x: 0, y: 0}
   BulletDeltaMovement: {x: 0, y: 0}
   MaxLiveTime: 10
---- !u!58 &-801509328248027241
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 34939732329476914}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
+  BulletDieEffect: {fileID: 2355502861919406371, guid: 56a382bd61dce6f4f8602639416ec035,
+    type: 3}
 --- !u!50 &7666257584477116533
 Rigidbody2D:
   serializedVersion: 4
@@ -208,3 +194,29 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!61 &312912372453396074
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34939732329476914}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.010583699, y: -0.04863423}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.6666667, y: 0.6666667}
+    newSize: {x: 0.2, y: 0.2}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.48462784, y: 0.2902807}
+  m_EdgeRadius: 0

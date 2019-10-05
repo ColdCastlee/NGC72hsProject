@@ -216,7 +216,7 @@
           <e p="CameraShake.cs" t="Include" />
           <e p="CameraShakeCinemachine.cs" t="Include" />
           <e p="CameraShakeManager.cs" t="Include" />
-          <e p="TestShake.cs" t="Include" />
+          <e p="ShakeGenerator.cs" t="Include" />
         </e>
         <e p="EZ Camera Shake" t="Include">
           <e p="Scripts" t="Include">

@@ -26,8 +26,11 @@ public class VirusBullet : NormalBullet
 
     private void CalculateDirToPlayer()
     {
-        var dir = (_player.transform.position - transform.position).normalized;
-        this.BulletMoveDir = dir;
+        if (_player)
+        {
+            var dir = (_player.transform.position - transform.position).normalized;
+            this.BulletMoveDir = dir;            
+        }
     }
 
     public override void Move()

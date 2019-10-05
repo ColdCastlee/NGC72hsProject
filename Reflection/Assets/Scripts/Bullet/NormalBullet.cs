@@ -11,18 +11,8 @@ namespace Bullet
         private bool _canBeReflected = true;
         private bool _isRefelcted = false;
         private bool _isInitialized = false;
-
+        public GameObject BulletDieEffect;
         private bool isShiled = false;
-
-        private void Awake()
-        {
-            this.gameObject.AddComponent<AudioMgr>();
-            MemoryMgr.LoadAssetFromResourceDir<AudioClip>(typeof(AudioName),"Audio/",(name,clip)=>
-            {
-                if(AudioMgr.Instance.audioclips.ContainsKey(name)==false)
-                    AudioMgr.Instance.audioclips.Add(name, clip);
-            });
-        }
 
         public override void Update()
         {
@@ -61,12 +51,8 @@ namespace Bullet
                 var playerSetMirrorScript = hitTarget.GetComponent<PlayerSetMirror>();
                 if (playerSetMirrorScript._settingShield)
                 {
-
-
                     AudioMgr.Instance.PlayEffect(AudioName._Shield);
-
                     
-
                     //TODO::整合被反弹函数，防止以后更改位置过多
                     playerSetMirrorScript.ShieldDefendOnce();
                     this.transform.position = playerSetMirrorScript.transform.position;
@@ -129,14 +115,22 @@ namespace Bullet
                 BulletAtkDamage *= 2;
             }else if (hitTarget.gameObject.layer == LayerMask.NameToLayer("Collision"))
             {
+                if (this.BulletAtkDamage >= 8)
+                {
+                    AudioMgr.Instance.PlayEffect(AudioName._takeDamage3);
+                    ShakeGenerator.Instance.ShakeMedium();
+                }
                 this.Die();
             }
         }
 
         public override void Die()
         {
-            Destroy(this.gameObject);
+            Destroy(Instantiate(BulletDieEffect, this.transform.position, Quaternion.identity),0.4f);
+            Destroy(this.gameObject,0.4f);
+            this.GetComponent<SpriteRenderer>().enabled = false;
             //ONDIE
+            //粒子特效？
             //TODO::Implement this
         }
     }
