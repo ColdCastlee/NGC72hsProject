@@ -238,6 +238,7 @@
         <e p="Scripts" t="Include">
           <e p="AbstractActorHealth.cs" t="Include" />
           <e p="Audio" t="Include">
+            <e p="AudioAwake.cs" t="Include" />
             <e p="AudioMgr.cs" t="Include" />
             <e p="AudioName.cs" t="Include" />
             <e p="MemoryMgr.cs" t="Include" />
@@ -277,6 +278,7 @@
           <e p="UI" t="Include">
             <e p="ButtonPause.cs" t="Include" />
             <e p="Fade.cs" t="Include" />
+            <e p="FadeIn.cs" t="Include" />
             <e p="Global.cs" t="Include" />
             <e p="loadingScene.cs" t="Include" />
             <e p="StartGame.cs" t="Include" />

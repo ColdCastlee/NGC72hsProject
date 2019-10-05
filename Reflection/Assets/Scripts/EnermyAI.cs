@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Security.Cryptography;
+﻿
 using Character;
 using UnityEngine;
 using  Pathfinding;
-using Random = System.Random;
 
 public class EnermyAI : MonoBehaviour
 {
@@ -37,6 +33,8 @@ public class EnermyAI : MonoBehaviour
 
     private Transform zombin;
     // Start is called before the first frame update
+    
+    
     void Start()
     {
 
@@ -55,6 +53,7 @@ public class EnermyAI : MonoBehaviour
         curTime = 0;
 
         zombin = gameObject.GetComponentInChildren<Transform>();
+
     }
 
     void UpdatePath()

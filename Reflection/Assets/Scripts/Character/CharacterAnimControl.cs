@@ -40,6 +40,7 @@ public class CharacterAnimControl : MonoBehaviour
     private void Awake()
     {
         fsm = StateMachine<States>.Initialize(this);
+        
     }
 
     public void BeginRoll(Vector2 dir)
@@ -178,6 +179,7 @@ public class CharacterAnimControl : MonoBehaviour
     //TAKE DAMAGE
     void TakeDamage_Enter()
     {
+        
         _playerAnimator.Play("TakeDamage");
     }
     void TakeDamage_Update()

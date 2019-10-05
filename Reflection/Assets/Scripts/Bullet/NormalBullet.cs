@@ -1,5 +1,7 @@
-﻿using Boss;
+﻿using System;
+using Boss;
 using Character;
+using ReadyGamerOne.MemorySystem;
 using UnityEngine;
 
 namespace Bullet
@@ -9,6 +11,18 @@ namespace Bullet
         private bool _canBeReflected = true;
         private bool _isRefelcted = false;
         private bool _isInitialized = false;
+
+        private bool isShiled = false;
+
+        private void Awake()
+        {
+            this.gameObject.AddComponent<AudioMgr>();
+            MemoryMgr.LoadAssetFromResourceDir<AudioClip>(typeof(AudioName),"Audio/",(name,clip)=>
+            {
+                if(AudioMgr.Instance.audioclips.ContainsKey(name)==false)
+                    AudioMgr.Instance.audioclips.Add(name, clip);
+            });
+        }
 
         public override void Update()
         {
@@ -47,9 +61,14 @@ namespace Bullet
                 var playerSetMirrorScript = hitTarget.GetComponent<PlayerSetMirror>();
                 if (playerSetMirrorScript._settingShield)
                 {
+
+
+                    AudioMgr.Instance.PlayEffect(AudioName._Shield);
+
+                    
+
                     //TODO::整合被反弹函数，防止以后更改位置过多
                     playerSetMirrorScript.ShieldDefendOnce();
-                    
                     this.transform.position = playerSetMirrorScript.transform.position;
                     _isRefelcted = true;
                     this.MaxMoveSpeedXy *= 2;
@@ -85,6 +104,7 @@ namespace Bullet
                 {
                     var _zombinHealth = hitTarget.transform.gameObject.GetComponent<ZombinHealth>();
                     this.transform.position = hitTarget.transform.position;
+                    AudioMgr.Instance.PlayEffect(AudioName._zombieDie);
                     this.MaxMoveSpeedXy *= 2;
                     BulletAtkDamage++;
                     var _zombin = hitTarget.gameObject.GetComponent<EnermyAI>();
@@ -100,7 +120,7 @@ namespace Bullet
 
                 //Debug.Log("Hit");
                 var mirrorScript = hitTarget.transform.gameObject.GetComponent<Mirror>();
-                
+                AudioMgr.Instance.PlayEffect(AudioName._Shield);
                 this.BulletMoveDir = mirrorScript.ReflectionDir.normalized;
                 this.transform.position = mirrorScript.transform.position;
                 mirrorScript.TakeDamage(1);

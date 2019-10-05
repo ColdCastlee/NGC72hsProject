@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using ReadyGamerOne.MemorySystem;
+using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -17,6 +18,8 @@ namespace Boss
         void Start()
         {
             this.Hp = 25;
+          
+            this.Hp = BossMaxHp;
             _bossAnimator = GetComponent<Animator>();
         }
 
