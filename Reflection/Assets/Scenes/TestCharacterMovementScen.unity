@@ -8071,7 +8071,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1895566298
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8104,7 +8104,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 1895566300}
-  m_UpdateTime: 2
+  m_UpdateTime: 0.05
 --- !u!114 &1895566300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8947,6 +8947,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameObject
+      objectReference: {fileID: 0}
+    - target: {fileID: 2872504946158613316, guid: 511d0791504e8a64daf5c7debefaead1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2872504946158613322, guid: 511d0791504e8a64daf5c7debefaead1,
         type: 3}

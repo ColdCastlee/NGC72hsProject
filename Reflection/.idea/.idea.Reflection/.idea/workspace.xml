@@ -133,6 +133,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/AudioName.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Boss/ZombinHealth.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UI_FadeInFadeOut.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/touchSpace.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Audio/AudioMgr.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/EnermyAI.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/ButtonPause.cs" root0="FORCE_HIGHLIGHTING" />
@@ -185,6 +186,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/StartGame.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/Fade.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/FadeIn.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/touchSpace.cs" />
       </list>
     </option>
   </component>
@@ -251,7 +253,7 @@
       <workItem from="1570065760454" duration="42633000" />
       <workItem from="1570116493944" duration="7275000" />
       <workItem from="1570156633560" duration="36442000" />
-      <workItem from="1570244897268" duration="14771000" />
+      <workItem from="1570244897268" duration="18691000" />
     </task>
     <servers />
   </component>
